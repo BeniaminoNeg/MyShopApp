@@ -12,43 +12,42 @@ define(function(require) {
 			Indirizzo: '',
 			Id: ''
 		},
-		constructorName: "MSupermercato"
+		constructorName: "MSupermercato",
 
-		initialize: function (){
-			})
+		initialize: function (){},
+                
 		addProdotto: function (Prodotto) {
 			var IdCercato= Prodotto.Id;
-			if (this.VerificaProdotto(IdCercato)==false)
+			if (this.VerificaProdotto(IdCercato) === false)
 				{
 				Lunghezza = this.Catalogo.length;
 				this.Catalogo[Lunghezza]=Prodotto;
 				}
-		}
+		},
 
 		getProdotto: function (IdProdotto) {
 			prodottocercato = false;
-			for (var value in Catalogo)
+			for (var value in this.Catalogo)
 			{
-				if (Typeof(value)!=null)
+				if (Typeof(value) !== null)
 				{
-					if (value.Id == IdProdotto)
+					if (value.Id === IdProdotto)
 					{
-						prodottocercato=value;
+						prodottocercato = value;
 					}
 				}
 
 			}
 			return prodottocercato;
-		}
-
+		},
 
 		VerificaProdotto: function (IdProdotto) {
 			prodottotrovato = false;
-			for (var value in Catalogo)
+			for (var value in this.Catalogo)
 			{
-				if (Typeof(value)!=null)
+				if (Typeof(value) !== null)
 				{
-					if (value.Id == IdProdotto)
+					if (value.Id === IdProdotto)
 					{
 						prodottotrovato=true;
 					}
@@ -57,5 +56,8 @@ define(function(require) {
 			}
 			return prodottotrovato;
 		}
+                
+                });
+                
 		return MSupermercato;
 	});

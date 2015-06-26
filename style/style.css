@@ -78,6 +78,22 @@ body {
 .bar.bar-nav{
     background-color: #FF4500;}
 
+.nome{
+    display: block;
+    text-transform: uppercase;}
+
+.descrizione{
+    font-weight: 200;
+    font-size: 80%;
+    display: block;
+    text-align: center;}
+
+.prezzo{
+    display: inline;}
+
+
+
+
 /* END STRUCTURE */
 #map {
   height: 100%;

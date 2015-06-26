@@ -10,10 +10,12 @@ define(function(require) {
 			Email: '',
 			ProdottiOsservati: ''
 		},
-		constructorName: "MUtente"
+                
+		constructorName: "MUtente",
 
-		initialize: function (){
-			})
-		}
-	return MUtente;
+		initialize: function (){},
+                
 	});
+                
+	return MUtente;
+});

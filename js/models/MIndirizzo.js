@@ -8,10 +8,10 @@ define(function(require) {
 			Città: '',
 			NumeroCivico: ''
 		},
-		constructorName: "MIndirizzo"
+		constructorName: "MIndirizzo",
 
-		initialize: function (){
-			})
-		}
-		return MIndirizzo;
-	});
+		initialize: function (){}
+        });
+		
+        return MIndirizzo;
+});
