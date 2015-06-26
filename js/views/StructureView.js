@@ -11,8 +11,11 @@ define(function(require) {
     id: "main",
 
     events: {
-      "tap #nav1": "myView",
-      "tap #nav2": "map"
+      "tap #nav1": "home",
+      "tap #nav2": "spotlight",
+      "tap #nav3": "categorie",
+      "tap #nav4": "market",
+      "tap #nav5": "ricerca"
     },
 
     initialize: function(options) {
