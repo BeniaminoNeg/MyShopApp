@@ -14,22 +14,23 @@ define(function(require) {
     constructorName: "AppRouter",
 
     routes: {
-      // the default is the structure view
-      "": "showStructure",
-      "inevidenza":"InEvidenza",
+      // the default is the structure view  
+      //SINISTRA HTML DESTRA FUNZIONE ROUTER
+      "": "showStructure", 
+      "home":"Home",
       "spotlight":"Spotlight",
       "categorie": "Categorie",
       "market": "Market",
       "ricerca" : "Ricerca"
     },
 
-    firstView: "inevidenza",
+    firstView: "home",
 
     initialize: function(options) {
       this.currentView = undefined;
     },
 
-    InEvidenza: function() {
+    Home: function() {
       // highlight the nav1 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav1");
       // create a model with an arbitrary attribute for testing the template engine
