@@ -11,7 +11,7 @@ body {
   -webkit-user-select: none;
   /* no copy and paste, etc. */
   background-attachment: fixed;
-  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-family: 'Hattori', Helvetica, Arial, sans-serif;
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -20,8 +20,8 @@ body {
 /* END STANDARD MOBILE */
 /* CUSTOM FONTS */
 @font-face {
-  font-family: 'Dax';
-  src: url("../fonts/DaxBold.ttf") format("truetype"); }
+  font-family: 'Hattori';
+  src: url("../fonts/Hattori_Hanzo.otf") format("opentype"); }
 
 /* END CUSTOM FONTS */
 /* START STRUCTURE */
@@ -67,15 +67,18 @@ body {
 .not_scrollable {
   -webkit-overflow-scrolling: auto; }
 
+.tab-item {
+    color: #FFFFFF;
+    background-color: #FF4500; }
+
+.tab-item.active .tab-item:active {
+    color: #FF4500;
+    background-color: #FFFFFF; }
+
+.bar.bar-nav{
+    background-color: #FF4500;}
+
 /* END STRUCTURE */
 #map {
   height: 100%;
   width: 100%; }
-
-.tab-item {
-color: #FFFFFF;
-background-color: #FF4500; }
-
-.tab-item.active .tab-item:active {
-color: #FF4500;
-background-color: #FFFFFF; }

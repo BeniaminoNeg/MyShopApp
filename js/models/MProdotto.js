@@ -4,12 +4,12 @@ define(function(require) {
 
 	var MProdotto = Backbone.Model.extend({
 		defaults: {
-			Id,
-			Nome,
-			Immagine,
-			Descrizione,
-			Prezzo,
-			SupermercatoId
+			Id: '',
+			Nome: '',
+			Immagine: '',
+			Descrizione: '',
+			Prezzo: '',
+			SupermercatoId: ''
 		},
 		constructorName: "MProdotto"
 

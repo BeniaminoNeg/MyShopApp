@@ -6,11 +6,11 @@ define(function(require) {
 
 	var MSupermercato = Backbone.Model.extend({
 		defaults: {
-			Nome,
-			Catalogo,
-			Logo,
-			Indirizzo,
-			Id
+			Nome: '',
+			Catalogo: '',
+			Logo: '',
+			Indirizzo: '',
+			Id: ''
 		},
 		constructorName: "MSupermercato"
 

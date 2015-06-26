@@ -4,11 +4,11 @@ define(function(require) {
 
 	var MUtente = Backbone.Model.extend({
 		defaults: {
-			Nome,
-			Cognome,
-			Passwd,
-			Email,
-			ProdottiOsservati
+			Nome: '',
+			Cognome: '',
+			Passwd: '',
+			Email: '',
+			ProdottiOsservati: ''
 		},
 		constructorName: "MUtente"
 

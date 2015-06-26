@@ -4,9 +4,9 @@ define(function(require) {
 
 	var MIndirizzo = Backbone.Model.extend({
 		defaults: {
-			Via,
-			Città,
-			NumeroCivico
+			Via: '',
+			Città: '',
+			NumeroCivico: ''
 		},
 		constructorName: "MIndirizzo"
 
