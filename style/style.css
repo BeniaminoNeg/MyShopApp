@@ -11,7 +11,7 @@ body {
   -webkit-user-select: none;
   /* no copy and paste, etc. */
   background-attachment: fixed;
-  font-family: 'Mobile_Sans', 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -19,19 +19,12 @@ body {
 
 /* END STANDARD MOBILE */
 /* CUSTOM FONTS */
-@font-face{
-  font-family: 'Mobile_Sans';
-  src: url("../fonts/Mobile_Sans.TTF") format("truetype");  
-  src:url("../fonts/Mobile_Sans.woff") format("woff");
-  src: url("../fonts/Mobile_Sans.eot") format("embedded-opentype");}
+@font-face {
+  font-family: 'Dax';
+  src: url("../fonts/DaxBold.ttf") format("truetype"); }
+
 /* END CUSTOM FONTS */
 /* START STRUCTURE */
-
-.title:hover{
-  
-}
-
-
 #main {
   position: absolute;
   height: 100%;
@@ -78,3 +71,11 @@ body {
 #map {
   height: 100%;
   width: 100%; }
+
+.tab-item {
+color: #FFFFFF;
+background-color: #FF4500; }
+
+.tab-item.active .tab-item:active {
+color: #FF4500;
+background-color: #FFFFFF; }
