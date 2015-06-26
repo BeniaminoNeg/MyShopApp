@@ -91,8 +91,11 @@ body {
 .prezzo{
     display: inline;}
 
+.btn{
+    background-color: #FF4500;}
 
-
+.displayinline{
+    display: inline;}
 
 /* END STRUCTURE */
 #map {
