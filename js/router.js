@@ -26,7 +26,7 @@ define(function(require) {
     firstView: "inevidenza",
 
     initialize: function(options) {
-      this.currentView = ;
+      this.currentView = undefined;
     },
 
     InEvidenza: function() {
