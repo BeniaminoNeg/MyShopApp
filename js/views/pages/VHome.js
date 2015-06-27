@@ -23,10 +23,10 @@ define (function(require) {
       className: "tab-item",
 
       events: {
-         "tap #nav2": "goSpotlight",
-         "tap #nav3": "goCategorie",
-         "tap #nav4": "goMarket",
-         "tap #nav5": "goRicerca"
+         "tap #nav2": "goToSpotlight",
+         "tap #nav3": "goToCategorie",
+         "tap #nav4": "goToMarket",
+         "tap #nav5": "goToRicerca"
        },
        
        render: function() {
@@ -34,25 +34,25 @@ define (function(require) {
        return this;
        },
        
-       goSpotlight: function(e) {
+       goToSpotlight: function(e) {
         Backbone.history.navigate("spotlight", {
         trigger: true
         });
        },
        
-       goCategorie: function(e) {
+       goToCategorie: function(e) {
         Backbone.history.navigate("categorie", {
         trigger: true
         });
        },
        
-       goMarket: function(e) {
+       goToMarket: function(e) {
         Backbone.history.navigate("market", {
         trigger: true
         });
        },
        
-       goRicerca: function(e) {
+       goToRicerca: function(e) {
         Backbone.history.navigate("ricerca", {
         trigger: true
         });
