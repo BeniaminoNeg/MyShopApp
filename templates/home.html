@@ -4,11 +4,19 @@
       <img class="media-object pull-left" src={{prodottoimg}}>
       <div class="media-body">
         <p class="nome">{{prodottonome}}</p>
-        <p class="descrizione">{{prodottodescrizione}}</p>
-        <p class="supermercato">
-            <img class="media-object pull-left" src={{supermercatoimg}}>
-        </p>
-        <p class="prezzo">{{prodottoprezzo}}</p>
+        <div class="details-no">
+            <span class="icon icon-down-nav">Dettagli</span>
+            <div class="displaynone">
+                <p class="descrizione">{{prodottodescrizione}}</p>
+                <p class="supermercato">
+                    <img class="media-object pull-left" src={{supermercatoimg}}>
+                </p>
+                <p class="prezzo">{{prodottoprezzo}}</p>
+            </div>
+        </div>
+        <div class="unfollowed">
+            <span class="icon icon-star"></span>
+        </div>
       </div>
     </a>
   </li>

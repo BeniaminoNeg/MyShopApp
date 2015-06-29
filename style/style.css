@@ -97,6 +97,12 @@ body {
 .displayinline{
     display: inline;}
 
+.displaynone{
+    display: none;}
+
+.displayblock{
+    display: block;}
+
 /* END STRUCTURE */
 #map {
   height: 100%;
