@@ -30,6 +30,7 @@ define (function(require) {
        },
        
        render: function() {
+       jQuery.getJSON("http://localhost/MyShopWeb/Controller/CHome",elaboraJSON);//VORREI FARE QUÌ LE ISTANZE DEI MODEL
        $(this.el).html(this.template(this.model.toJSON()));//Binding tra template e dato
        return this;
        },
