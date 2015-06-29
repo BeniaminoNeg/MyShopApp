@@ -26,7 +26,14 @@ define (function(require) {
          "tap #nav2": "goToSpotlight",
          "tap #nav3": "goToCategorie",
          "tap #nav4": "goToMarket",
-         "tap #nav5": "goToRicerca"
+         "tap #nav5": "goToRicerca",
+         
+         "tap #details-no": "ProdPiuDettagli",
+         "tap #details-si": "ProdMenoDettagli",
+         
+         "tap #followed": "addPreferito",
+         "tap #unfollowed": "removePreferito"
+         
        },
        
        render: function() {
@@ -34,6 +41,29 @@ define (function(require) {
        $(this.el).html(this.template(this.model.toJSON()));//Binding tra template e dato
        return this;
        },
+       
+       ProdPiuDettagli: function (e) {//ci manca il pulsante per tenere traccia
+         $(this.el).removeClass("icon-down-nav");
+         $(this.el).addClass("icon-up-nav");
+         $(this.el).children("<div>").removeClass("displaynone");
+         $(this.el).children("<div>").addClass("displayblock");
+       },
+       
+       ProdMenoDettagli: function (e) {
+         //implementare sia grafuca che logica
+       },
+       
+       addPreferito: function (e) {
+        //implementare
+       },
+       
+       removePreferito: function (e) {
+         $(this.el).removeClass("icon-up-nav");
+         $(this.el).addClass("icon-down-nav");
+         $(this.el).children("<div>").removeClass("displayblock");
+         $(this.el).children("<div>").addClass("displaynone");
+       },
+       
        
        goToSpotlight: function(e) {
         Backbone.history.navigate("spotlight", {
