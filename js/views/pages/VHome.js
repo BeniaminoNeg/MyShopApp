@@ -50,8 +50,8 @@ define (function(require) {
        },
        
        ProdMenoDettagli: function (e) {
-         $(this.el).removeClass("icon-up-nav");
-         $(this.el).addClass("icon-down-nav");
+         $(this.el).removeClass(".icon-up-nav");
+         $(this.el).addClass(".icon-down-nav");
          $(this.el).children("<div>").removeClass("displayblock");
          $(this.el).children("<div>").addClass("displaynone");
        },
@@ -60,6 +60,7 @@ define (function(require) {
        addPreferito: function (e) {
          $(this.el).removeClass("unfollowed");
          $(this.el).addClass("followed");
+         $(this.addPreferitoLocally($(this.el).parent(".id").getData()));
          $(this.el).children("<span>").removeClass("icon icon-star");
          $(this.el).children("<span>").addClass("icon icon-star-filled");
        },
@@ -67,6 +68,7 @@ define (function(require) {
        removePreferito: function (e) {
          $(this.el).removeClass("followed");
          $(this.el).addClass("unfollowed");
+         $(this.removePreferitoLocally($(this.el).parent(".id").getData()));
          $(this.el).children("<span>").removeClass("icon icon-star-filled");
          $(this.el).children("<span>").addClass("icon icon-star");
        },
@@ -94,7 +96,26 @@ define (function(require) {
         Backbone.history.navigate("ricerca", {
         trigger: true
         });
-       }
+       },
+       
+       addPreferitoLocally: function(toFollow) {
+        var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
+        if(!currentfollowed){
+            currentfollowed = new Array();
+        }
+        currentfollowed.push("toFollow");
+        window.localStorage.setItem("followed", JSON.stringify(user));
+
+        },
+        
+       removePreferitoLocally: function(toUnfollow){
+        var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
+        
+        currentfollowed.removeEl = function(toUnfollow) {
+            this.splice(array.indexOf(toUnfollow), 1);
+        };
+        window.localStorage.setItem("followed", JSON.stringify(user));
+        }
   });
   return VHome;
 });
