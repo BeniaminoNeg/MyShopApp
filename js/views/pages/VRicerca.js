@@ -15,7 +15,7 @@ define (function(require) {
       model:MioModel,
       
       initialize: function() {
-          this.template=Utils.templates.spotlight;
+          this.template=Utils.templates.ricerca;
           
       },
       

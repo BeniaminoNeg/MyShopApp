@@ -5,8 +5,10 @@
  */
 define (function(require) {
   var Backbone = require("backbone");
-  var MioModel = require("models/.");
+  var MioModel = require("../models/.");
+  var MioModel = require("../models/MProdotto.js");
   var Utils = require("utils");
+  var COllection = require("../collections/CollProdotti.js");
   
   var VHome = Utils.Page.extend({
       
@@ -37,10 +39,24 @@ define (function(require) {
        },
        
        render: function() {
-       jQuery.getJSON("http://localhost/MyShopWeb/Controller/CHome",elaboraJSON);//VORREI FARE QUÌ LE ISTANZE DEI MODEL
+           var CollProd = new CollProdotti();
+           CollProd.
+       //jQuery.getJSON("http://localhost/MyShopWeb/Controller/CHome",elaboraJSON);//VORREI FARE QUÌ LE ISTANZE DEI MODEL
        $(this.el).html(this.template(this.model.toJSON()));//Binding tra template e dato
        return this;
        },
+       
+       elaboraJSON : function (data) {
+           var jsonpars= $.parse(data);
+           for(i=0; i<data.length; i++){
+               p[i]= new MProdotto (data.Id, data.Nome, data.Immagine)
+               
+           }
+           Backbone.Model.create()
+           var Prodotto1= eval (p1); 
+           var Prodotto1= new MProdotto(p1.immagine);
+       },
+       
        
        ProdPiuDettagli: function (e) {//ci manca il pulsante per tenere traccia
          $(this.el).removeClass("icon-down-nav");

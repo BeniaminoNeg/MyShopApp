@@ -15,13 +15,15 @@ define(function(require) {
 
     routes: {
       // the default is the structure view  
-      //SINISTRA HTML DESTRA FUNZIONE ROUTER
+      //SINISTRA path della view DESTRA FUNZIONE definita dentro al ROUTER
       "": "showStructure", 
-      "home":"Home",
-      "spotlight":"Spotlight",
-      "categorie": "Categorie",
-      "market": "Market",
-      "ricerca" : "Ricerca"
+      "/pages/VHome":"Home",
+      "/pages/spotlight":"Spotlight",
+      "/pages/categorie": "Categorie",
+      "/pages/market": "Market",
+      "/pages/ricerca" : "Ricerca"
+      //note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
+                                    //quindi la rotta utilizza il criterio del longest match!!!!!!!!!
     },
 
     firstView: "home",
