@@ -17,11 +17,11 @@ define(function(require) {
       // the default is the structure view  
       //SINISTRA path della view DESTRA FUNZIONE definita dentro al ROUTER
       "": "showStructure", 
-      "/pages/VHome":"Home",
-      "/pages/spotlight":"Spotlight",
-      "/pages/categorie": "Categorie",
-      "/pages/market": "Market",
-      "/pages/ricerca" : "Ricerca"
+      "home":"Home",
+      "spotlight":"Spotlight",
+      "categorie": "Categorie",
+      "market": "Market",
+      "ricerca" : "Ricerca"
       //note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
                                     //quindi la rotta utilizza il criterio del longest match!!!!!!!!!
     },
@@ -130,10 +130,10 @@ define(function(require) {
     // load the structure view
     showStructure: function() {
       if (!this.structureView) {
-        this.structureView = new StructureView();
+        this.structureView = new structure();
         // put the el element of the structure view into the DOM
-        document.body.appendChild(this.structureView.render().el);
-        this.structureView.trigger("inTheDOM");
+        document.body.appendChild(this.structure.render().el);
+        this.structure.trigger("inTheDOM");
       }
       // go to first view
       this.navigate(this.firstView, {trigger: true});
