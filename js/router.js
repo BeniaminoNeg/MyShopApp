@@ -2,20 +2,19 @@ define(function(require) {
 
   var $ = require("jquery");
   var Backbone = require("backbone");
-  var Utils = require("utils");
   
-  var Prodotto = require("models/MProdotto.js");
-  var Utente = require("models/MUtente.js");
+  var Prodotto = require("models/MProdotto");
+  var Utente = require("models/MUtente");
   
-  var CollSupermercati = require("collections/CollSupermercati");
   var CollProdotti = require("collections/CollProdotti");
+  var CollSupermercati = require("collections/CollSupermercati");
   
-  var StructureView = require("views/StructureView.js");
-  var VCategoria = require("views/pages/VCategoria.js");
-  var VHome = require("views/pages/VHome.js");
-  var VMarket = require("views/pages/VMarket.js");
-  var VRicerca = require("views/pages/VRierca.js");
-  var VSpotlight = require("views/pages/VSpotlight.js");
+  var StructureView = require("views/StructureView");
+  var VCategorie = require("views/pages/VCategorie");
+  var VHome = require("views/pages/VHome");
+  var VMarket = require("views/pages/VMarket");
+  var VRicerca = require("views/pages/VRicerca");
+  var VSpotlight = require("views/pages/VSpotlight");
 
   var AppRouter = Backbone.Router.extend({
 
