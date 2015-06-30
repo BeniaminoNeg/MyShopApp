@@ -11,11 +11,11 @@ define(function(require) {
     id: "main",
 
     events: {
-      "tap #nav1": "home",
-      "tap #nav2": "spotlight",
-      "tap #nav3": "categorie",
-      "tap #nav4": "market",
-      "tap #nav5": "ricerca"
+      "tap #nav1": "goToHome",
+      "tap #nav2": "goToSpotlight",
+      "tap #nav3": "goToCategorie",
+      "tap #nav4": "goToMarket",
+      "tap #nav5": "goToRicerca"
     },
 
     initialize: function(options) {
@@ -34,8 +34,35 @@ define(function(require) {
       return this;
     },
 
-    // rendered: function(e) {
-    // },
+    goToHome: function(e) {
+        Backbone.history.navigate("home", {
+        trigger: true
+        });
+       },
+       
+       goToSpotlight: function(e) {
+           Backbone.history.navigate("spotlight", {
+           trigger: true
+           });
+          },
+       
+       goToCategorie: function(e) {
+        Backbone.history.navigate("categorie", {
+        trigger: true
+        });
+       },
+       
+       goToMarket: function(e) {
+        Backbone.history.navigate("market", {
+        trigger: true
+        });
+       },
+       
+       goToRicerca: function(e) {
+        Backbone.history.navigate("ricerca", {
+        trigger: true
+        });
+       },
 
     // generic go-back function
     goBack: function() {
@@ -46,19 +73,8 @@ define(function(require) {
       // here we assume that at any time at least one tab bar element is active
       document.getElementsByClassName("active")[0].classList.remove("active");
       document.getElementById(elementId).classList.add("active");
-    },
-
-    map: function(event) {
-      Backbone.history.navigate("map", {
-        trigger: true
-      });
-    },
-
-    myView: function(event) {
-      Backbone.history.navigate("myview", {
-        trigger: true
-      });
     }
+    
   });
 
   return StructureView;
