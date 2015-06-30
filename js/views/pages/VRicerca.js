@@ -26,7 +26,8 @@ define (function(require) {
          "tap #nav1": "goToHome",
          "tap #nav2": "goToSpotlight",
          "tap #nav3": "goToCategorie",
-         "tap #nav4": "goToMarket"
+         "tap #nav4": "goToMarket",
+         "tap #btn": "ricercaProdotti"
        },
        
        render: function() {
@@ -58,6 +59,12 @@ define (function(require) {
         });
        },
        
+       ricercaProdotti: function(){
+           if(document.ricerca.onsubmit && !document.ricerca.onsubmit()){
+                return;
+           }
+           document.ricerca.submit();
+        }  
       
   });
   return VCategorie;
