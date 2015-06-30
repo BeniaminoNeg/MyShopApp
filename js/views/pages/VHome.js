@@ -50,18 +50,25 @@ define (function(require) {
        },
        
        ProdMenoDettagli: function (e) {
-         //implementare sia grafuca che logica
-       },
-       
-       addPreferito: function (e) {
-        //implementare
-       },
-       
-       removePreferito: function (e) {
          $(this.el).removeClass("icon-up-nav");
          $(this.el).addClass("icon-down-nav");
          $(this.el).children("<div>").removeClass("displayblock");
          $(this.el).children("<div>").addClass("displaynone");
+       },
+       
+       //ad addpreferito e removepreferito mancano le interazioni con la parte di memoria dove memorizzare i preferiti
+       addPreferito: function (e) {
+         $(this.el).removeClass("unfollowed");
+         $(this.el).addClass("followed");
+         $(this.el).children("<span>").removeClass("icon icon-star");
+         $(this.el).children("<span>").addClass("icon icon-star-filled");
+       },
+       
+       removePreferito: function (e) {
+         $(this.el).removeClass("followed");
+         $(this.el).addClass("unfollowed");
+         $(this.el).children("<span>").removeClass("icon icon-star-filled");
+         $(this.el).children("<span>").addClass("icon icon-star");
        },
        
        
@@ -87,7 +94,7 @@ define (function(require) {
         Backbone.history.navigate("ricerca", {
         trigger: true
         });
-       },
+       }
   });
   return VHome;
 });
