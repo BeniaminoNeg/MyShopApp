@@ -42,7 +42,7 @@ define(function(require) {
 
     Home: function() {
       // highlight the nav1 tab bar element as the current one
-      this.structureView.setActiveTabBarElement("nav1");
+      this.StructureView.setActiveTabBarElement("#nav1");
       // create a model with an arbitrary attribute for testing the template engine
       var listaprodotti = new Prodotti({
         //key: "testValue"
@@ -51,7 +51,7 @@ define(function(require) {
         //non sappiamo cosa ci va qua
       })
       // create the view
-      var page = new VInEvidenza({
+      var page = new VHome({
         listaprodotti: listaprodotti,
         listasupermercati: listasupermercati
 
