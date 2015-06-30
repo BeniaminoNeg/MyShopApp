@@ -2,12 +2,20 @@ define(function(require) {
 
   var $ = require("jquery");
   var Backbone = require("backbone");
+  var Utils = require("utils");
+  
+  var Prodotto = require("models/MProdotto.js");
+  var Utente = require("models/MUtente.js");
+  
   var CollSupermercati = require("collections/CollSupermercati");
   var CollProdotti = require("collections/CollProdotti");
-  var StructureView = require("views/StructureView");
-  var Utente = require("models/MUtente");
-  var MyView = require("views/pages/MyView");
-  var MapView = require("views/pages/MapView");
+  
+  var StructureView = require("views/StructureView.js");
+  var VCategoria = require("views/pages/VCategoria.js");
+  var VHome = require("views/pages/VHome.js");
+  var VMarket = require("views/pages/VMarket.js");
+  var VRicerca = require("views/pages/VRierca.js");
+  var VSpotlight = require("views/pages/VSpotlight.js");
 
   var AppRouter = Backbone.Router.extend({
 
@@ -130,7 +138,7 @@ define(function(require) {
     // load the structure view
     showStructure: function() {
       if (!this.structureView) {
-        this.structureView = new structure();
+        this.StructureView = new structure();
         // put the el element of the structure view into the DOM
         document.body.appendChild(this.structure.render().el);
         this.structure.trigger("inTheDOM");

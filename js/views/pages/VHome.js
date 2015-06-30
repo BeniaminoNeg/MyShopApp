@@ -25,17 +25,11 @@ define (function(require) {
       className: "tab-item",
 
       events: {
-         "tap #nav2": "goToSpotlight",
-         "tap #nav3": "goToCategorie",
-         "tap #nav4": "goToMarket",
-         "tap #nav5": "goToRicerca",
+         "tap .details-no": "ProdPiuDettagli",
+         "tap .details-si": "ProdMenoDettagli",
          
-         "tap #details-no": "ProdPiuDettagli",
-         "tap #details-si": "ProdMenoDettagli",
-         
-         "tap #followed": "addPreferito",
-         "tap #unfollowed": "removePreferito"
-         
+         "tap .followed": "addPreferito",
+         "tap .unfollowed": "removePreferito"
        },
        
        render: function() {
@@ -72,7 +66,6 @@ define (function(require) {
          $(this.el).children("<div>").addClass("displaynone");
        },
        
-       //ad addpreferito e removepreferito mancano le interazioni con la parte di memoria dove memorizzare i preferiti
        addPreferito: function (e) {
          $(this.el).removeClass("unfollowed");
          $(this.el).addClass("followed");
@@ -89,31 +82,6 @@ define (function(require) {
          $(this.el).children("<span>").addClass("icon icon-star");
        },
        
-       
-       goToSpotlight: function(e) {
-        Backbone.history.navigate("spotlight", {
-        trigger: true
-        });
-       },
-       
-       goToCategorie: function(e) {
-        Backbone.history.navigate("categorie", {
-        trigger: true
-        });
-       },
-       
-       goToMarket: function(e) {
-        Backbone.history.navigate("market", {
-        trigger: true
-        });
-       },
-       
-       goToRicerca: function(e) {
-        Backbone.history.navigate("ricerca", {
-        trigger: true
-        });
-       },
-       
        addPreferitoLocally: function(toFollow) {
         var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
         if(!currentfollowed){
@@ -121,12 +89,10 @@ define (function(require) {
         }
         currentfollowed.push("toFollow");
         window.localStorage.setItem("followed", JSON.stringify(user));
-
         },
         
        removePreferitoLocally: function(toUnfollow){
         var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
-        
         currentfollowed.removeEl = function(toUnfollow) {
             this.splice(array.indexOf(toUnfollow), 1);
         };

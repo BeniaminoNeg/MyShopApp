@@ -23,10 +23,7 @@ define (function(require) {
       className: "tab-item",
 
       events: {
-         "tap #nav1": "goToHome",
-         "tap #nav3": "goToCategorie",
-         "tap #nav4": "goToMarket",
-         "tap #nav5": "goToRicerca"
+    	  
        },
        
        render: function() {
@@ -34,29 +31,6 @@ define (function(require) {
        return this;
        },
        
-       goToHome: function(e) {
-        Backbone.history.navigate("home", {
-        trigger: true
-        });
-       },
-       
-       goToCategorie: function(e) {
-        Backbone.history.navigate("categorie", {
-        trigger: true
-        });
-       },
-       
-       goToMarket: function(e) {
-        Backbone.history.navigate("market", {
-        trigger: true
-        });
-       },
-       
-       goToRicerca: function(e) {
-        Backbone.history.navigate("ricerca", {
-        trigger: true
-        });
-       },
   });
   return VSpotlight;
 });
