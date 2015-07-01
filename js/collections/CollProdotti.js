@@ -4,13 +4,28 @@ define(function(require){
 	var MProdotto = require("../models/MProdotto");
 
 
-	var Prodotti = Backbone.Collection.extend({
-			constructorName: "Prodotti",
+	var CollProdotti = Backbone.Collection.extend({
+			constructorName: "CollProdotti",
 			model: MProdotto,
-			url: "http://localhost/MyShopWeb/Controller/CHome.php"
+                        url:"",
+			//url: "http://localhost/MyShopWeb/Controller/CHome.php",
+                        
+                        
+                        fetchProdottiHome : function () {
+                            this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";
+                            this.fetch();
+                            
+                        },
+                        
+                        fetchProdottiRicerca : function () {
+                            this.url="http://localhost/MyShopWeb/index.php?tobecontinued";
+                            //
+                            
+                        }
+                       
 		});
 
-	return Prodotti;
+	return CollProdotti;
 	       });
 
 		

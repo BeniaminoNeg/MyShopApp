@@ -50,6 +50,7 @@ define(function(require) {
       this.structureView.setDisplayNoneBackBtnElement();
        
       // create a model with an arbitrary attribute for testing the template engine
+<<<<<<< Updated upstream
       var listaProdotti = new CollProdotti(
         //key: "testValue"
     		{"Id":"009",
@@ -82,6 +83,32 @@ define(function(require) {
       var page = new VBoxProdotto({
         listaProdotti: listaProdotti,
         listaSupermercati: listaSupermercati
+=======
+      var listaprodotti = new CollProdotti({
+        //key: "testValue"
+      });
+     
+      listaprodotti.fetchProdotiHome();
+      
+      var ArrIdp = [];
+      for (var i=0; i<6; i++)
+      {
+          ArrIdp[i]=listaprodotti.get(i).Id;
+      }
+      
+      var listasupermercati = new CollSupermercati({
+        //
+      })
+      
+      listasupermercati.fetchSupermercatiHome(ArrIdp);
+      // create the view
+      
+      alert(listaprodotti.toJSON());
+      var page = new VHome({
+        listaprodotti: listaprodotti,
+        listasupermercati: listasupermercati
+
+>>>>>>> Stashed changes
       });
       // show the view
       this.changePage(page);
