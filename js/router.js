@@ -41,7 +41,7 @@ define(function(require) {
 
     Home: function() {
       // highlight the nav1 tab bar element as the current one
-      this.StructureView.setActiveTabBarElement("#nav1");
+      this.structureView.setActiveTabBarElement("#nav1");
       // create a model with an arbitrary attribute for testing the template engine
       var listaprodotti = new Prodotti({
         //key: "testValue"
@@ -137,9 +137,9 @@ define(function(require) {
     // load the structure view
     showStructure: function() {
       if (!this.structureView) {
-        this.StructureView = new structure();
+        this.structureView = new StructureView();
         // put the el element of the structure view into the DOM
-        document.body.appendChild(this.structure.render().el);
+        document.body.appendChild(this.structureView.render().el);
         this.structure.trigger("inTheDOM");
       }
       // go to first view

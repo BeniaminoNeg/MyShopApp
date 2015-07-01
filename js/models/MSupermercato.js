@@ -1,8 +1,8 @@
 define(function(require) {
 
 	var Backbone = require("backbone");
-	var Indirizzo = require("MIndirizzo");
-	var Prodotto = require ("MProdotto");
+	var Indirizzo = require("models/MIndirizzo");
+	var Prodotto = require ("models/MProdotto");
 
 	var MSupermercato = Backbone.Model.extend({
 		defaults: {

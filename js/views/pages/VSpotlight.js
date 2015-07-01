@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 define (function(require) {
-  var Backbone = require("backbone");
-  var MioModel = require("models/.");
-  var Utils = require("utils");
+	  var Backbone = require("backbone");
+	  var MProdotto = require("../../models/MProdotto");
+	  var Utils = require("utils");
+	  var CollProdotti = require("../../collections/CollProdotti");
   
   var VSpotlight = Utils.Page.extend({
       
       constructorName: "VSpotlight",
       
-      model:MioModel,
+      model: MProdotto,
       
       initialize: function() {
           this.template=Utils.templates.spotlight;

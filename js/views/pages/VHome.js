@@ -5,16 +5,15 @@
  */
 define (function(require) {
   var Backbone = require("backbone");
-  var MioModel = require("../models/.");
-  var MioModel = require("../models/MProdotto.js");
+  var MProdotto = require("../../models/MProdotto");
   var Utils = require("utils");
-  var COllection = require("../collections/CollProdotti.js");
+  var CollProdotti = require("../../collections/CollProdotti");
   
   var VHome = Utils.Page.extend({
       
       constructorName: "VHome",
       
-      model:MioModel,
+      model: MProdotto,
       
       initialize: function() {
           this.template=Utils.templates.home;
@@ -34,7 +33,6 @@ define (function(require) {
        
        render: function() {
            var CollProd = new CollProdotti();
-           CollProd.
        //jQuery.getJSON("http://localhost/MyShopWeb/Controller/CHome",elaboraJSON);//VORREI FARE QUÌ LE ISTANZE DEI MODEL
        $(this.el).html(this.template(this.model.toJSON()));//Binding tra template e dato
        return this;

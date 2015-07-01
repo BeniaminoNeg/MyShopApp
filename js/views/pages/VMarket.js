@@ -4,15 +4,16 @@
  * and open the template in the editor.
  */
 define (function(require) {
-  var Backbone = require("backbone");
-  var MioModel = require("models/.");
-  var Utils = require("utils");
+	  var Backbone = require("backbone");
+	  var Utils = require("utils");
+	  var CollSupermercati = require("../../collections/CollSupermercati");
+	  var MSupermercato = require("../../models/MSupermercato");
   
   var VMarket = Utils.Page.extend({
       
       constructorName: "VMarket",
       
-      model:MioModel,
+      model:MSupermercato,
       
       initialize: function() {
           this.template=Utils.templates.spotlight;
@@ -33,5 +34,5 @@ define (function(require) {
        
 
   });
-  return VMarkete;
+  return VMarket;
 });
