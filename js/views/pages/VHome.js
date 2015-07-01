@@ -5,37 +5,40 @@
  */
 define (function(require) {
   var Backbone = require("backbone");
-  var MProdotto = require("../../models/MProdotto");
   var Utils = require("utils");
-  var CollProdotti = require("../../collections/CollProdotti");
+  var VBoxProdotto = require("view/pages/VBoxProdotto");
   
   var VHome = Utils.Page.extend({
       
-      constructorName: "VHome",
-      
-      model: MProdotto,
-      
       initialize: function() {
-          this.template=Utils.templates.home;
+          this.template=Utils.templates.tabella;
           
       },
       
-      id: "nav1",
-      className: "tab-item",
+      id: "home",
+      className: "table-view",
 
       events: {
-         "tap .details-no": "ProdPiuDettagli",
-         "tap .details-si": "ProdMenoDettagli",
-         
-         "tap .followed": "addPreferito",
-         "tap .unfollowed": "removePreferito"
+    	  
        },
        
        render: function() {
-           var CollProd = new CollProdotti();
-       //jQuery.getJSON("http://localhost/MyShopWeb/Controller/CHome",elaboraJSON);//VORREI FARE QUÌ LE ISTANZE DEI MODEL
-       $(this.el).html(this.template(this.model.toJSON()));//Binding tra template e dato
-       return this;
+    	   
+    	   this.addAll
+    	   
+    	   $(this.el).html(boxProdotto(this.listaProdotti.toJSON(), this.listaSupermercati.toJSON()));//Binding tra template e dato
+    	   
+    	   this.$el.find('body').children().remove();
+    	   $(this.el).html(boxProdotto(this.listaProdotti.toJSON(), this.listaSupermercati.toJSON()));//Binding tra template e dato
+    	   return this;
+       },
+       
+       addAll: function(){
+    	   var boxProdotto = new VBoxProdotto({
+ 		      notes: this.notes,
+ 		      note: note
+ 		    });
+ 		    this.$el.find("tbody").append(view.render().el);
        },
        
        elaboraJSON : function (data) {
@@ -47,57 +50,9 @@ define (function(require) {
            Backbone.Model.create()
            var Prodotto1= eval (p1); 
            var Prodotto1= new MProdotto(p1.immagine);
-       },
-       
-       
-       ProdPiuDettagli: function (e) {//ci manca il pulsante per tenere traccia
-         $(this.el).removeClass("icon-down-nav");
-         $(this.el).addClass("icon-up-nav");
-         $(this.el).children("<div>").removeClass("displaynone");
-         $(this.el).children("<div>").addClass("displayblock");
-       },
-       
-       ProdMenoDettagli: function (e) {
-         $(this.el).removeClass(".icon-up-nav");
-         $(this.el).addClass(".icon-down-nav");
-         $(this.el).children("<div>").removeClass("displayblock");
-         $(this.el).children("<div>").addClass("displaynone");
-       },
-       
-       addPreferito: function (e) {
-         $(this.el).removeClass("unfollowed");
-         $(this.el).addClass("followed");
-         $(this.addPreferitoLocally($(this.el).parent(".id").getData()));
-         $(this.el).children("<span>").removeClass("icon icon-star");
-         $(this.el).children("<span>").addClass("icon icon-star-filled");
-       },
-       
-       removePreferito: function (e) {
-         $(this.el).removeClass("followed");
-         $(this.el).addClass("unfollowed");
-         $(this.removePreferitoLocally($(this.el).parent(".id").getData()));
-         $(this.el).children("<span>").removeClass("icon icon-star-filled");
-         $(this.el).children("<span>").addClass("icon icon-star");
-       },
-       
-       addPreferitoLocally: function(toFollow) {
-        var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
-        if(!currentfollowed){
-            currentfollowed = new Array();
-        }
-        currentfollowed.push("toFollow");
-        window.localStorage.setItem("followed", JSON.stringify(user));
-        },
-        
-       removePreferitoLocally: function(toUnfollow){
-        var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
-        currentfollowed.removeEl = function(toUnfollow) {
-            this.splice(array.indexOf(toUnfollow), 1);
-        };
-        window.localStorage.setItem("followed", JSON.stringify(user));
-        }
+       }
   });
-  return VHome;
+  return VBoxProdotto;
 });
 
 

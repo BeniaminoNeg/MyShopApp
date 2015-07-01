@@ -67,11 +67,11 @@ body {
 .not_scrollable {
   -webkit-overflow-scrolling: auto; }
 
-.tab-item {
+.tab-item, .icon, .tab-label {
     color: #FFFFFF;
     background-color: #FF4500; }
 
-.tab-item.active .tab-item:active {
+.active {
     color: #FF4500;
     background-color: #FFFFFF; }
 
@@ -102,6 +102,15 @@ body {
 
 .displayblock{
     display: block;}
+    
+    .title{
+    color: #FFFFFF;
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 0.5em;
+    font-size: 1.75em;
+    display: inline;}  
 
 /* END STRUCTURE */
 #map {

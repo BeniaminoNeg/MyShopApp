@@ -15,7 +15,9 @@ define(function(require) {
       "tap #nav2": "goToSpotlight",
       "tap #nav3": "goToCategorie",
       "tap #nav4": "goToMarket",
-      "tap #nav5": "goToRicerca"
+      "tap #nav5": "goToRicerca",
+    	  
+      "tap #back": "goBack"
     },
 
     initialize: function(options) {
@@ -65,14 +67,33 @@ define(function(require) {
        },
 
     // generic go-back function
-    goBack: function() {
-      //window.history.back();
+       goBack: function() {
+    	   window.history.back();
     },
 
     setActiveTabBarElement: function(elementId) {
       // here we assume that at any time at least one tab bar element is active
-      document.getElementsByClassName("active")[0].classList.remove("active");
-      document.getElementById(elementId).classList.add("active");
+         document.getElementsByClassName("active")[0].classList.remove("active");
+    	 document.getElementsByClassName("active")[0].classList.remove("active");
+         document.getElementsByClassName("active")[0].classList.remove("active");
+         document.getElementById(elementId).classList.add("active");
+         document.getElementById(elementId).getElementsByClassName('icon')[0].classList.add("active");
+         document.getElementById(elementId).getElementsByClassName('tab-label')[0].classList.add("active");
+    },
+    
+    //non me lo cambia
+    setTitleContentElement: function(title){
+    	document.getElementById("title").innerHTML= "home";
+    },
+    
+    setDisplayBackBtnElement: function(){
+    	document.getElementById("back").classList.remove("displaynone");
+    },
+    
+    setDisplayNoneBackBtnElement: function(){
+    	if(document.getElementById("back").classList){
+    		document.getElementById("back").classList.add("displaynone");
+    	}
     }
     
   });

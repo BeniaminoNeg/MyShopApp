@@ -1,17 +1,18 @@
+ {{#each Id}}
   <li class="table-view-cell media">
     <a class="navigate-right float-left">
-      <img class="media-object pull-left" src={{prodottoimg}}>
+      <img class="media-object pull-left" src={{Immagine}}>
       <div class="media-body">
-        <p class="nome">{{prodottonome}}</p>
-        <p class="id displaynone">{{id}}</p>
+        <p class="nome">{{Nome}}</p>
+        <p class="id displaynone">{{Id}}</p>
         <div class="details-no">
             <span class="icon icon-down-nav">Dettagli</span>
             <div class="displaynone">
-                <p class="descrizione">{{prodottodescrizione}}</p>
+                <p class="descrizione">{{Descrizione}}</p>
                 <p class="supermercato">
-                    <img class="media-object pull-left" src={{supermercatoimg}}>
+                    <img class="media-object pull-left" src={{Logo}}>
                 </p>
-                <p class="prezzo">{{prodottoprezzo}}</p>
+                <p class="prezzo">€ {{Prezzo}}</p>
             </div>
         </div>
         <div class="unfollowed">
@@ -20,3 +21,4 @@
       </div>
     </a>
   </li>
+{{/each}}
