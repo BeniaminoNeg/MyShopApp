@@ -7,21 +7,30 @@ define(function(require){
 	var CollProdotti = Backbone.Collection.extend({
 			constructorName: "CollProdotti",
 			model: MProdotto,
-                        url:"",
-			//url: "http://localhost/MyShopWeb/Controller/CHome.php",
-                        
-                        
-                        fetchProdottiHome : function () {
-                            this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";
-                            this.fetch();
-                            
-                        },
-                        
-                        fetchProdottiRicerca : function () {
-                            this.url="http://localhost/MyShopWeb/index.php?tobecontinued";
-                            //
-                            
-                        }
+            url:"",                        
+            
+            fetchProdottiHome : function () {
+                this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";
+                this.fetch();
+                
+            },
+            
+            fetchProdottiRicerca : function () {
+                this.url="http://localhost/MyShopWeb/index.php?tobecontinued";
+                
+            },
+            
+            getIdsProdotti: function(){
+            	var prodotto = new MProdotto();
+            	var i = 0;
+            	var stringIds;
+            	do{
+            		prodotto = this.at(i);
+            		stringIds += prodotto.get(Ids) + ",";
+            		i++;
+            	}while(prodotto)
+            	return stringIds;
+            }
                        
 		});
 

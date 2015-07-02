@@ -3,15 +3,13 @@ define (function(require) {
   var Utils = require("utils");
   
   var MProdotto = require("../../models/MProdotto");
-  var CollProdotti = require("../../collections/CollProdotti");
-  var CollSupermercati = require("../../collections/CollProdotti");
+  var MSupermercato = require("../../models/MSupermercato");
   
   var VBoxProdotto = Utils.Page.extend({
       
       constructorName: "VBoxProdotto",
       
-      listaProdotti: CollProdotti,
-  	  listaSupemercati: CollSupermercati,
+      Prodotto: MProdotto,
       
       initialize: function() {
           this.template=Utils.templates.prodotto;
@@ -27,24 +25,10 @@ define (function(require) {
          "tap .unfollowed": "removePreferito"
        },
        
-       render: function() {
-    	   //$(this.el).html(this.template(this.listaProdotti.toJSON())); //Binding tra template e dato
-    	   
-    	   $(this.el).append(template(this.listaProdotti));
+       render: function() {    	   
+    	   this.$el.append(this.template(this.Prodotto.toJSON));
     	   return this;
-       },
-
-       elaboraJSON : function (data) {
-           var jsonpars= $.parse(data);
-           for(i=0; i<data.length; i++){
-               p[i]= new MProdotto (data.Id, data.Nome, data.Immagine)
-               
-           }
-           Backbone.Model.create()
-           var Prodotto1= eval (p1); 
-           var Prodotto1= new MProdotto(p1.immagine);
-       },
-       
+       },       
        
        ProdPiuDettagli: function (e) {//ci manca il pulsante per tenere traccia
          $(this.el).removeClass("icon-down-nav");
@@ -76,7 +60,7 @@ define (function(require) {
          $(this.el).children("<span>").addClass("icon icon-star");
        },
        
-       addPreferitoLocally: function(toFollow) {
+       addPreferitoLocally: function(e) {
         var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
         if(!currentfollowed){
             currentfollowed = new Array();
@@ -85,7 +69,7 @@ define (function(require) {
         window.localStorage.setItem("followed", JSON.stringify(user));
         },
         
-       removePreferitoLocally: function(toUnfollow){
+       removePreferitoLocally: function(e){
         var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
         currentfollowed.removeEl = function(toUnfollow) {
             this.splice(array.indexOf(toUnfollow), 1);
@@ -93,7 +77,7 @@ define (function(require) {
         window.localStorage.setItem("followed", JSON.stringify(user));
         }
   });
-  return VHome;
+  return VBoxProdotto;
 });
 
 

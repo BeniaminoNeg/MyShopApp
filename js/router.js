@@ -45,12 +45,11 @@ define(function(require) {
       // highlight the nav1 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav1");
       //set title
-      this.stuctureView.setTitleContentElement("Home");
+      this.structureView.setTitleContentElement("Home");
       //hide the back button
       this.structureView.setDisplayNoneBackBtnElement();
        
       // create a model with an arbitrary attribute for testing the template engine
-<<<<<<< Updated upstream
       var listaProdotti = new CollProdotti(
         //key: "testValue"
     		{"Id":"009",
@@ -79,37 +78,17 @@ define(function(require) {
     				 				   "Citt\u00e0":"L'Aquila",
     				 				   "NumeroCivico":null},
     			 "Id":"00001"});
+      
+      //var listaProdotti = new CollProdotti();
+      //listaProdotti.fetchProdottiHome();
+      //var listaSupermercati = new CollSupermercati();
+      //listaSupermercati.fetchSupermercatiHome(listaProdotti);
+      
       // create the view
       var page = new VBoxProdotto({
         listaProdotti: listaProdotti,
-        listaSupermercati: listaSupermercati
-=======
-      var listaprodotti = new CollProdotti({
-        //key: "testValue"
-      });
-     
-      listaprodotti.fetchProdotiHome();
-      
-      var ArrIdp = [];
-      for (var i=0; i<6; i++)
-      {
-          ArrIdp[i]=listaprodotti.get(i).Id;
-      }
-      
-      var listasupermercati = new CollSupermercati({
-        //
+        listaSupermercati: listaSupermercati,
       })
-      
-      listasupermercati.fetchSupermercatiHome(ArrIdp);
-      // create the view
-      
-      alert(listaprodotti.toJSON());
-      var page = new VHome({
-        listaprodotti: listaprodotti,
-        listasupermercati: listasupermercati
-
->>>>>>> Stashed changes
-      });
       // show the view
       this.changePage(page);
     },
@@ -203,7 +182,7 @@ define(function(require) {
         this.structureView = new StructureView();
         // put the el element of the structure view into the DOM
         document.body.appendChild(this.structureView.render().el);
-        this.structure.trigger("inTheDOM");
+        this.structureView.trigger("inTheDOM");
       }
       // go to first view
       this.navigate(this.firstView, {trigger: true});

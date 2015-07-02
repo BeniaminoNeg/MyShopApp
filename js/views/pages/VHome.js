@@ -6,10 +6,18 @@
 define (function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
-  var VBoxProdotto = require("view/pages/VBoxProdotto");
+  var VBoxProdotto = require("views/pages/VBoxProdotto");
   
+  var CollProdotti = require("../../collections/CollProdotti");
+  var CollSupermercati = require("../../collections/CollSupermercati");
+
   var VHome = Backbone.View.extend({
       
+	  constructorName: "VHome",
+	  
+      listaProdotti: CollProdotti,
+  	  listaSupemercati: CollSupermercati,
+	  
       initialize: function() {
           this.template=Utils.templates.tabella;
           
@@ -21,47 +29,26 @@ define (function(require) {
       events: {
     	  
        },
-       
-<<<<<<< Updated upstream
        render: function() {
-    	   
-    	   this.addAll
-    	   
-    	   $(this.el).html(boxProdotto(this.listaProdotti.toJSON(), this.listaSupermercati.toJSON()));//Binding tra template e dato
-    	   
-    	   this.$el.find('body').children().remove();
-    	   $(this.el).html(boxProdotto(this.listaProdotti.toJSON(), this.listaSupermercati.toJSON()));//Binding tra template e dato
-    	   return this;
+    	    this.$el.html($('#content').append(this.template()));
+    	    this.addAll();
+    	    return this;
        },
        
-       addAll: function(){
-    	   var boxProdotto = new VBoxProdotto({
- 		      notes: this.notes,
- 		      note: note
- 		    });
- 		    this.$el.find("tbody").append(view.render().el);
-=======
-       render: function() {           
-       //jQuery.getJSON("http://localhost/MyShopWeb/Controller/CHome",elaboraJSON);//VORREI FARE QUÌ LE ISTANZE DEI MODEL
-       $(this.el).html(this.template(this.model.toJSON()));//Binding tra template e dato
-       return this;
->>>>>>> Stashed changes
-       },
-       
-       /*elaboraJSON : function (data) {
-           var jsonpars= $.parse(data);
-           for(i=0; i<data.length; i++){
-               p[i]= new MProdotto (data.Id, data.Nome, data.Immagine)
-               
-           }
-           Backbone.Model.create()
-           var Prodotto1= eval (p1); 
-           var Prodotto1= new MProdotto(p1.immagine);
-<<<<<<< Updated upstream
-       }
-=======
-       },*/
-       
+       addAll: function () {
+    	    // clear out the container each time you render index (find,children, remove -> tutte fun. jquery/zepto)
+    	    this.$el.find('ul').children().remove();
+    	    //.models -> access to the JavaScript array of models inside of the collection
+    	    //.proxy -> this è l'elemento della collection, che passiamo alla fun. addOne
+    	    _.each(this.listaProdotti.models, $.proxy(this, 'addOne'));
+    	  },
+
+    	  addOne: function (Prodotto) {
+    	    var view = new VBoxProdotto({
+    	      Prodotto: Prodotto
+    	    });
+    	    this.$el.find("ul").append(view.render().el);
+    	  },
        
        ProdPiuDettagli: function (e) {//ci manca il pulsante per tenere traccia
          $(this.el).removeClass("icon-down-nav");
@@ -109,7 +96,6 @@ define (function(require) {
         };
         window.localStorage.setItem("followed", JSON.stringify(user));
         }
->>>>>>> Stashed changes
   });
   return VBoxProdotto;
 });
