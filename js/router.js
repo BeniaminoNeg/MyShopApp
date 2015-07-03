@@ -96,6 +96,8 @@ define(function(require) {
     Spotlight: function() {
       // highlight the nav1 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav2");
+      //set title
+      this.structureView.setTitleContentElement("Spotlight");
       //display the back button
       this.structureView.setDisplayBackBtnElement();
       // create a model with an arbitrary attribute for testing the template engine
@@ -122,6 +124,8 @@ define(function(require) {
     Categorie: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav3");
+      //set title
+      this.structureView.setTitleContentElement("Categorie");
       //display the back button
       this.structureView.setDisplayBackBtnElement();
       // create the view and show it
@@ -141,6 +145,8 @@ define(function(require) {
      Market: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav4");
+      //set title
+      this.structureView.setTitleContentElement("Market");
       //display the back button
       this.structureView.setDisplayBackBtnElement();
       // create the view and show it
@@ -160,6 +166,8 @@ define(function(require) {
     Ricerca: function() {
       // highlight the nav2 tab bar element as the current one
       this.structureView.setActiveTabBarElement("nav5");
+      //set title
+      this.structureView.setTitleContentElement("Ricerca");
       //display the back button
       this.structureView.setDisplayBackBtnElement();
       // create the view and show it

@@ -83,7 +83,7 @@ define(function(require) {
     
     //non me lo cambia
     setTitleContentElement: function(title){
-    	document.getElementById("title").innerHTML= "home";
+    	document.getElementById("title").innerHTML= title;
     },
     
     setDisplayBackBtnElement: function(){
