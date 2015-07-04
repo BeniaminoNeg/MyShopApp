@@ -48,20 +48,25 @@ define(function(require) {
       //hide the back button
       this.structureView.setDisplayNoneBackBtnElement();
       // create a model with an arbitrary attribute for testing the template engine
-      var listaProdotti = new CollProdotti(
-        //key: "testValue"
-    		{"Id":"009",
+      var listaProdotti = new CollProdotti([
+    		{
+    		  "Id":"009",
     		  "Nome":"Riso Scotti ai funghi porcini",
     		  "Immagine": "../img/es_prodotto.jpg",
     		  "Descrizione":"Riso scotti ai funghi porcini 210g",
     		  "Prezzo":"1.55",
-    		  "SupermercatoId":"00003"},
+    		  "SupermercatoId":"00003"
+    		},
     		  
-    		  {"Id":"010",
-    			  "Nome":"Riso scotti agli asparagi",
-    			  "Immagine": "../img/es_prodotto.jpg",
-    			  "Descrizione":"Riso scotti agli asparagi gr.210",
-    			  "Prezzo":"1.55","SupermercatoId":"00002"});
+    		{
+			  "Id":"010",
+			  "Nome":"Riso scotti agli asparagi",
+			  "Immagine": "../img/es_prodotto.jpg",
+			  "Descrizione":"Riso scotti agli asparagi gr.210",
+			  "Prezzo":"1.55",
+			  "SupermercatoId":"00002"
+    		}
+      ]);
       
       var listaSupermercati = new CollSupermercati(
     	  {"Nome":"Tigre",

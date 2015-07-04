@@ -26,7 +26,8 @@ define (function(require) {
        },
        
        render: function() {    	   
-    	   this.$el.append(this.template(this.Prodotto.toJSON));
+    	  // this.$el.append(this.template(this.Prodotto.toJSON));
+    	   this.$el.html(_.template($('<ul>').html(), this.Prodotto.toJSON()))
     	   return this;
        },       
        
