@@ -11,12 +11,11 @@ define(function(require) {
   var CollSupermercati = require("collections/CollSupermercati");
   
   var StructureView = require("views/StructureView");
-  var VCategorie = require("views/pages/VCategorie");
   var VHome = require("views/pages/VHome");
+  var VCategorie = require("views/pages/VCategorie");
   var VMarket = require("views/pages/VMarket");
   var VRicerca = require("views/pages/VRicerca");
   var VSpotlight = require("views/pages/VSpotlight");
-  var VBoxProdotto = require("views/pages/VBoxProdotto");
 
   var AppRouter = Backbone.Router.extend({
 
@@ -48,7 +47,6 @@ define(function(require) {
       this.structureView.setTitleContentElement("Home");
       //hide the back button
       this.structureView.setDisplayNoneBackBtnElement();
-       
       // create a model with an arbitrary attribute for testing the template engine
       var listaProdotti = new CollProdotti(
         //key: "testValue"
@@ -85,7 +83,7 @@ define(function(require) {
       //listaSupermercati.fetchSupermercatiHome(listaProdotti);
       
       // create the view
-      var page = new VBoxProdotto({
+      var page = new VHome({
         listaProdotti: listaProdotti,
         listaSupermercati: listaSupermercati,
       })

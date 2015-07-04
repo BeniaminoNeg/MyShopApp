@@ -83,6 +83,9 @@ body {
 
 .bar.bar-nav{
     background-color: #FF4500; }
+    
+ .table-view-cell .media{
+    float: left;}
 
 .nome{
     display: block;
@@ -100,7 +103,7 @@ body {
 .btn{
     background-color: #FF4500;}
     
-    .title{
+.title{
     color: #FFFFFF;
     text-transform: uppercase;
     text-align: left;
