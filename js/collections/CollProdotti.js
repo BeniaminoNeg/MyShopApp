@@ -21,14 +21,12 @@ define(function(require){
             },
             
             getIdsProdotti: function(){
-            	var prodotto = new MProdotto();
             	var i = 0;
             	var stringIds;
-            	do{
-            		prodotto = this.at(i);
-            		stringIds += prodotto.get(Ids) + ",";
+            	while(this.at(i)){
+            		stringIds += this.at(i).get(Ids) + ","; //nel caso di piu prodotti da medesimo Sup avremo piu id uguali
             		i++;
-            	}while(prodotto)
+            	}
             	return stringIds;
             }
                        
