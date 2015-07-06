@@ -91,6 +91,11 @@ body {
     display: block;
     text-transform: uppercase;}
 
+.icon-dettagli, .icon-follow{
+	font-size: 90%;
+	color: #FF4500;
+	background-color: #FFFFFF}
+
 .descrizione{
     font-weight: 200;
     font-size: 80%;
@@ -98,7 +103,13 @@ body {
     text-align: center;}
 
 .prezzo{
-    display: inline;}
+	text-size:110%;
+	font-weight: bold;
+    display: block;
+    text-align: right}
+
+#tofollow{
+	text-align:right}
 
 .btn{
     background-color: #FF4500;}

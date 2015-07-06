@@ -94,6 +94,7 @@ define(function(require) {
         listaSupermercati: listaSupermercati,
       })
       // show the view
+      console.log(page.el);
       this.changePage(page);
     },
 

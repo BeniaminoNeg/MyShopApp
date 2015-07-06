@@ -20,8 +20,7 @@ define (function(require) {
       className: "table-view-cell media",
 
       events: {
-         "tap .details-no": "ProdPiuDettagli",
-         "tap .details-si": "ProdMenoDettagli",
+         "tap #dettagli": "ProdDettagli",
          
          "tap .followed": "addPreferito",
          "tap .unfollowed": "removePreferito"
@@ -34,18 +33,21 @@ define (function(require) {
     	   return this;
        },       
        
-       ProdPiuDettagli: function (e) {//ci manca il pulsante per tenere traccia
-         $(this.el).removeClass("icon-down-nav");
-         $(this.el).addClass("icon-up-nav");
-         $(this.el).children("<div>").removeClass("displaynone");
-         $(this.el).children("<div>").addClass("displayblock");
-       },
-       
-       ProdMenoDettagli: function (e) {
-         $(this.el).removeClass(".icon-up-nav");
-         $(this.el).addClass(".icon-down-nav");
-         $(this.el).children("<div>").removeClass("displayblock");
-         $(this.el).children("<div>").addClass("displaynone");
+       ProdDettagli: function (e) {//ci manca il pulsante per tenere traccia
+    	  if($(this.el).find('#dettagli').attr('class') == 'no'){
+    		 $(this.el).find('#dettagli').children(".icon").removeClass("icon-down-nav");
+    		 $(this.el).find('#dettagli').children(".icon").addClass("icon-up-nav");
+    		 $(this.el).find('#dettagli').children("div").removeClass("displaynone");
+    		 $(this.el).find('#dettagli').children("div").addClass("displayblock");
+    		 $(this.el).find('#dettagli').removeClass("no");
+    	   }else{
+      		 $(this.el).find('#dettagli').children(".icon").removeClass("icon-up-nav");
+    		 $(this.el).find('#dettagli').children(".icon").addClass("icon-down-nav");
+    		 $(this.el).find('#dettagli').children("div").removeClass("displayblock");
+    		 $(this.el).find('#dettagli').children("div").addClass("displaynone");
+    		 $(this.el).find('#dettagli').addClass("no");
+    	   }
+         console.log(this.el);
        },
        
        addPreferito: function (e) {
