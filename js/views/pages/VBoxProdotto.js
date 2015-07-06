@@ -11,10 +11,12 @@ define (function(require) {
       
       Prodotto: MProdotto,
       
-      initialize: function() {
+      initialize: function(options) {
           this.template=Utils.templates.prodotto;
+          this.Prodotto= options.Prodotto;
       },
       
+      tagName: "li",
       className: "table-view-cell media",
 
       events: {
@@ -25,9 +27,10 @@ define (function(require) {
          "tap .unfollowed": "removePreferito"
        },
        
-       render: function() {    	   
-    	  // this.$el.append(this.template(this.Prodotto.toJSON));
-    	   this.$el.html(_.template($('<ul>').html(), this.Prodotto.toJSON()))
+       render: function() {
+    	   this.$el.html(this.template(this.Prodotto.toJSON()))
+    	  //this.$el.append(this.template(this.Prodotto.toJSON));
+    	   //this.$el.html(_.template($('<ul>').html(), this.Prodotto.toJSON()));    	   
     	   return this;
        },       
        

@@ -68,7 +68,7 @@ define(function(require) {
     		}
       ]);
       
-      var listaSupermercati = new CollSupermercati(
+      var listaSupermercati = new CollSupermercati([
     	  {"Nome":"Tigre",
     		  "Logo": "../img/es_logo.png",
     		  "Indirizzo":{"Via":"Via Preturo",
@@ -80,7 +80,8 @@ define(function(require) {
     			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
     				 				   "Citt\u00e0":"L'Aquila",
     				 				   "NumeroCivico":null},
-    			 "Id":"00001"});
+    			 "Id":"00001"}
+    		  ]);
       
       //var listaProdotti = new CollProdotti();
       //listaProdotti.fetchProdottiHome();

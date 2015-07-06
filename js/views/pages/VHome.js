@@ -13,15 +13,16 @@ define (function(require) {
   
   var MProdotto = require("../../models/MProdotto");
 
-  var VHome = Backbone.View.extend({
+  var VHome = Utils.Page.extend({
       
 	  constructorName: "VHome",
 	  
       listaProdotti: CollProdotti,
   	  listaSupemercati: CollSupermercati,
 	  
-      initialize: function() {
-          //this.template=Utils.templates.tabella;
+      initialize: function(options) {
+    	  this.listaProdotti= options.listaProdotti;
+    	  this.listaSupermercati= options.listaSupermercati;
           
       },
       
@@ -35,53 +36,23 @@ define (function(require) {
        render: function() {
     	    //this.$el.html($('content').append(this.template()));
     	    this.addAll();
-    	    return this;
+    	   return this;
        },
        
        addAll: function () {
     	    // clear out the container each time you render index (find,children, remove -> tutte fun. jquery/zepto)
-    	    
-    	   //$(this.el).find('tabella').children().remove();
-    	      var listaProdotti2 = new CollProdotti([
-    	                                    		{
-    	                                    		  "Id":"009",
-    	                                    		  "Nome":"Riso Scotti ai funghi porcini",
-    	                                    		  "Immagine": "../img/es_prodotto.jpg",
-    	                                    		  "Descrizione":"Riso scotti ai funghi porcini 210g",
-    	                                    		  "Prezzo":"1.55",
-    	                                    		  "SupermercatoId":"00003"
-    	                                    		},
-    	                                    		  
-    	                                    		{
-    	                                			  "Id":"010",
-    	                                			  "Nome":"Riso scotti agli asparagi",
-    	                                			  "Immagine": "../img/es_prodotto.jpg",
-    	                                			  "Descrizione":"Riso scotti agli asparagi gr.210",
-    	                                			  "Prezzo":"1.55",
-    	                                			  "SupermercatoId":"00002"
-    	                                    		}
-    	                                      ]);
-    	   
-    	   $(this.el).html($('tabella').children().remove());
-    	   
+    	    this.$el.find('ul').children().remove();
     	   //.models -> access to the JavaScript array of models inside of the collection
     	    //.proxy -> this è l'elemento della collection, che passiamo alla fun. addOne
-    	    //alert(listaProdotti2.at(1).get("Id"));  //prova per vedere se funzionava la collection
-    	    
-    	   _.each(listaProdotti2.models, function (Prodotto) {
-       	    var view = new VBoxProdotto({
-      	      Prodotto: Prodotto
-      	    });
-       	    $(this.el).html($('tabella').append(view.render().el));
-      	  });
+    	   _.each(this.listaProdotti.models, $.proxy(this, 'addOne'));
     	  },
 
     	  addOne: function (Prodotto) {
     	    var view = new VBoxProdotto({
     	      Prodotto: Prodotto
     	    });
-    	    //this.$el.find('tabella').append(view.render().el);
-    	    $(this.el).html($('tabella').append(view.render().el));
+    	    view.render();
+    	    this.$el.append(view.el);
     	  },
    
   });

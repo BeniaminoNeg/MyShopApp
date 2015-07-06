@@ -24,7 +24,7 @@ define(function(require) {
       // load the precompiled template
       this.template = Utils.templates.structure;
       //this.on("inTheDOM", this.rendered);
-      // bind the back event to the goBack function
+      //bind the back event to the goBack function
       //document.getElementById("back").addEventListener("back", this.goBack(), false);
     },
 
