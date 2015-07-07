@@ -83,18 +83,21 @@ define(function(require) {
     			 "Id":"00001"}
     		  ]);
       */
-
+      
+      var thisRouter = this;
+      
       var listaProdotti = new CollProdotti();
-      setUrlProdottiHome();
+      listaProdotti.setUrlProdottiHome();
       listaProdotti.fetch().done(function(data){
           // create the view
           var page = new VHome({
             listaProdotti: listaProdotti,
             listaSupermercati: listaSupermercati,
           });
+          // show the view
+          thisRouter.changePage(page);
       });
-      // show the view
-      this.changePage(page);
+
     },
 
     Spotlight: function() {
