@@ -85,7 +85,7 @@ define(function(require) {
       */
 
       var listaProdotti = new CollProdotti();
-      listaProdottiHome();
+      setUrlProdottiHome();
       listaProdotti.fetch().done(function(data){
           // create the view
           var page = new VHome({

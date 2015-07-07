@@ -9,11 +9,11 @@ define(function(require){
 			model: MProdotto,
             url:"",                        
             
-            urlProdottiHome : function () {
+            setUrlProdottiHome : function () {
                 this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";               
             },
             
-            urlProdottiRicerca : function () {
+            setUrlProdottiRicerca : function () {
                 this.url="http://localhost/MyShopWeb/index.php?tobecontinued";
             },
             
