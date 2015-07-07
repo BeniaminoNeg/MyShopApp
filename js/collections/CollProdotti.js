@@ -9,15 +9,12 @@ define(function(require){
 			model: MProdotto,
             url:"",                        
             
-            fetchProdottiHome : function () {
-                this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";
-                this.fetch();
-                
+            urlProdottiHome : function () {
+                this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";               
             },
             
-            fetchProdottiRicerca : function () {
+            urlProdottiRicerca : function () {
                 this.url="http://localhost/MyShopWeb/index.php?tobecontinued";
-                
             },
             
             getIdsProdotti: function(){

@@ -20,20 +20,18 @@ define (function(require) {
       className: "table-view-cell media",
 
       events: {
-         "tap #dettagli": "ProdDettagli",
+         "tap #dettagli": "Dettagli",
          
-         "tap .followed": "addPreferito",
-         "tap .unfollowed": "removePreferito"
+         "tap #tofollow": "Follow"
        },
        
        render: function() {
-    	   this.$el.html(this.template(this.Prodotto.toJSON()))
-    	  //this.$el.append(this.template(this.Prodotto.toJSON));
-    	   //this.$el.html(_.template($('<ul>').html(), this.Prodotto.toJSON()));    	   
+    	   this.$el.html(this.template(this.Prodotto.toJSON()));
+    	   this.checkPreferitoLocally();
     	   return this;
        },       
        
-       ProdDettagli: function (e) {//ci manca il pulsante per tenere traccia
+       Dettagli: function (e) {
     	  if($(this.el).find('#dettagli').attr('class') == 'no'){
     		 $(this.el).find('#dettagli').children(".icon").removeClass("icon-down-nav");
     		 $(this.el).find('#dettagli').children(".icon").addClass("icon-up-nav");
@@ -47,40 +45,44 @@ define (function(require) {
     		 $(this.el).find('#dettagli').children("div").addClass("displaynone");
     		 $(this.el).find('#dettagli').addClass("no");
     	   }
-         console.log(this.el);
        },
        
-       addPreferito: function (e) {
-         $(this.el).removeClass("unfollowed");
-         $(this.el).addClass("followed");
-         $(this.addPreferitoLocally($(this.el).parent(".id").getData()));
-         $(this.el).children("<span>").removeClass("icon icon-star");
-         $(this.el).children("<span>").addClass("icon icon-star-filled");
+      Follow: function (e) {
+         if($(this.el).find('#tofollow').attr('class') == 'followed'){
+	         $(this.el).find('#tofollow').removeClass("followed");
+	         this.removePreferitoLocally($(this.el).find('#id').text()); //da sistemare l'addpreferitolocally
+	         $(this.el).find('#tofollow').children("span").removeClass("icon icon-star-filled");
+	         $(this.el).find('#tofollow').children("span").addClass("icon icon-star");
+         }else{
+	         $(this.el).find('#tofollow').addClass("followed");
+	         this.addPreferitoLocally($(this.el).find('#id').text()); //da sistemare l'addpreferitolocally
+	         $(this.el).find('#tofollow').children("span").removeClass("icon icon-star");
+	         $(this.el).find('#tofollow').children("span").addClass("icon icon-star-filled");
+         }
        },
        
-       removePreferito: function (e) {
-         $(this.el).removeClass("followed");
-         $(this.el).addClass("unfollowed");
-         $(this.removePreferitoLocally($(this.el).parent(".id").getData()));
-         $(this.el).children("<span>").removeClass("icon icon-star-filled");
-         $(this.el).children("<span>").addClass("icon icon-star");
-       },
-       
-       addPreferitoLocally: function(e) {
-        var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
-        if(!currentfollowed){
-            currentfollowed = new Array();
-        }
-        currentfollowed.push("toFollow");
-        window.localStorage.setItem("followed", JSON.stringify(user));
+       addPreferitoLocally: function(toFollow) {
+        var currentfollowed = window.localStorage.getItem("followed");
+        currentfollowed += toFollow;
+        currentfollowed += ',';
+        window.localStorage.setItem("followed", currentfollowed);
         },
         
-       removePreferitoLocally: function(e){
-        var currentfollowed = JSON.parse(window.localStorage.getItem("followed"));
-        currentfollowed.removeEl = function(toUnfollow) {
-            this.splice(array.indexOf(toUnfollow), 1);
-        };
-        window.localStorage.setItem("followed", JSON.stringify(user));
+       removePreferitoLocally: function(toUnfollow){
+        var currentfollowed = window.localStorage.getItem("followed");
+        var ESPR = new RegExp(toUnfollow + '\,');
+        currentfollowed = currentfollowed.replace(ESPR, "");
+        window.localStorage.setItem("followed", currentfollowed);
+        },
+        
+        checkPreferitoLocally: function(){
+	    	var currentfollowed = window.localStorage.getItem("followed");
+	    	var id = $(this.el).find('#id').text();
+	    	if (currentfollowed.search(id) != '-1'){
+	    		$(this.el).find('#tofollow').addClass("followed");
+	    		$(this.el).find('#tofollow').children("span").removeClass("icon icon-star");
+	            $(this.el).find('#tofollow').children("span").addClass("icon icon-star-filled");
+        	}
         }
   });
   return VBoxProdotto;

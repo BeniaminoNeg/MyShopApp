@@ -48,7 +48,7 @@ define(function(require) {
       //hide the back button
       this.structureView.setDisplayNoneBackBtnElement();
       // create a model with an arbitrary attribute for testing the template engine
-      var listaProdotti = new CollProdotti([
+      /*var listaProdotti = new CollProdotti([
     		{
     		  "Id":"009",
     		  "Nome":"Riso Scotti ai funghi porcini",
@@ -82,19 +82,18 @@ define(function(require) {
     				 				   "NumeroCivico":null},
     			 "Id":"00001"}
     		  ]);
-      
-      //var listaProdotti = new CollProdotti();
-      //listaProdotti.fetchProdottiHome();
-      //var listaSupermercati = new CollSupermercati();
-      //listaSupermercati.fetchSupermercatiHome(listaProdotti);
-      
-      // create the view
-      var page = new VHome({
-        listaProdotti: listaProdotti,
-        listaSupermercati: listaSupermercati,
-      })
+      */
+
+      var listaProdotti = new CollProdotti();
+      listaProdottiHome();
+      listaProdotti.fetch().done(function(data){
+          // create the view
+          var page = new VHome({
+            listaProdotti: listaProdotti,
+            listaSupermercati: listaSupermercati,
+          });
+      });
       // show the view
-      console.log(page.el);
       this.changePage(page);
     },
 

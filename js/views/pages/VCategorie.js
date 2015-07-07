@@ -20,14 +20,12 @@ define (function(require) {
           
       },
       
-      id: "nav3",
-      className: "tab-item",
+      tagName: "ul",
+      id: "tabella",
+      className: "table-view",
 
       events: {
-         "tap #nav1": "goToHome",
-         "tap #nav2": "goToSpotlight",
-         "tap #nav4": "goToMarket",
-         "tap #nav5": "goToRicerca"
+
        },
        
        render: function() {
@@ -35,29 +33,6 @@ define (function(require) {
        return this;
        },
        
-       goToHome: function(e) {
-        Backbone.history.navigate("home", {
-        trigger: true
-        });
-       },
-       
-       goToSpotlight: function(e) {
-        Backbone.history.navigate("spotlight", {
-        trigger: true
-        });
-       },
-       
-       goToMarket: function(e) {
-        Backbone.history.navigate("market", {
-        trigger: true
-        });
-       },
-       
-       goToRicerca: function(e) {
-        Backbone.history.navigate("ricerca", {
-        trigger: true
-        });
-       },
   });
   return VCategorie;
 });
