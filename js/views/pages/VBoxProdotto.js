@@ -62,24 +62,24 @@ define (function(require) {
        },
        
        addPreferitoLocally: function(toFollow) {
-        var currentfollowed = window.localStorage.getItem("followed");
-        currentfollowed += toFollow;
-        currentfollowed += ',';
-        window.localStorage.setItem("followed", currentfollowed);
+        var currentFollowed = window.localStorage.getItem("followed");
+        currentFollowed += toFollow;
+        currentFollowed += ',';
+        window.localStorage.setItem("followed", currentFollowed);
         },
         
        removePreferitoLocally: function(toUnfollow){
-        var currentfollowed = window.localStorage.getItem("followed");
+        var currentFollowed = window.localStorage.getItem("followed");
         var ESPR = new RegExp(toUnfollow + '\,');
-        currentfollowed = currentfollowed.replace(ESPR, "");
-        window.localStorage.setItem("followed", currentfollowed);
+        currentFollowed = currentFollowed.replace(ESPR, "");
+        window.localStorage.setItem("followed", currentFollowed);
         },
         
         checkPreferitoLocally: function(){
-	    	var currentfollowed = window.localStorage.getItem("followed");
-	    	if(!currentfollowed){
+	    	var currentFollowed = window.localStorage.getItem("followed");
+	    	if(currentFollowed != null){
 		    	var id = $(this.el).find('#id').text();
-		    	if (currentfollowed.search(id) != '-1'){
+		    	if (currentFollowed.search(id) != '-1'){
 		    		$(this.el).find('#tofollow').addClass("followed");
 		    		$(this.el).find('#tofollow').children("span").removeClass("icon icon-star");
 		            $(this.el).find('#tofollow').children("span").addClass("icon icon-star-filled");

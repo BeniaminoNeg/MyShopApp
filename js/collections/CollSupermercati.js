@@ -8,13 +8,10 @@ var CollProdotti = require("../collections/CollProdotti");
 var CollSupermercati = Backbone.Collection.extend({
 		constructorName: "CollSupermercati",
 		model: MSupermercato,
-                url:"",
                 
-                fetchSupermercatiHome: function (listaProdotti) {
-                	var stringIds = listaProdotti.getIdsProdotti();
-                    this.url = "http://localhost/MyShopWeb/index.php?func=HomeSup&dati="+stringIds;
-                    this.fetch();
-                }
+            setUrlSupMarket: function (listaProdotti) {
+                this.url = "http://localhost/MyShopWeb/index.php?func=Market";
+            }
 	});
 
 return CollSupermercati;

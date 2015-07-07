@@ -11,13 +11,11 @@ define(function(require) {
 					Prezzo: '',
 					SupermercatoId: ''
                 },
+                
                 constructorName: "MProdotto",
 
                 initialize: function (){},
                 
-                toJSON: function(options) {
-                    return _.clone(this.attributes);
-                  },
         });
 
         return MProdotto;

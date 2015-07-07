@@ -6,23 +6,21 @@
 define (function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
-  var VBoxProdotto = require("views/pages/VBoxProdotto");
+  var VCategoria = require("views/pages/VCategoria");
   
   var CollProdotti = require("../../collections/CollProdotti");
-  var CollSupermercati = require("../../collections/CollSupermercati");
   
   var MProdotto = require("../../models/MProdotto");
 
-  var VHome = Utils.Page.extend({
+  var VCategorie = Utils.Page.extend({
       
-	  constructorName: "VHome",
+	  constructorName: "VCategorie",
 	  
-      listaProdotti: CollProdotti,
-  	  listaSupemercati: CollSupermercati,
+  	  listaCategorie: CollCategorie,
 	  
       initialize: function(options) {
-    	  this.listaProdotti= options.listaProdotti;
-    	  this.listaSupermercati= options.listaSupermercati;
+          this.template=Utils.templates.categoria;
+    	  this.listaCategorie = options.listaCategorie;
           
       },
       
@@ -44,12 +42,12 @@ define (function(require) {
     	    this.$el.find('ul').children().remove();
     	   //.models -> access to the JavaScript array of models inside of the collection
     	    //.proxy -> this è l'elemento della collection, che passiamo alla fun. addOne
-    	   _.each(this.listaProdotti.models, $.proxy(this, 'addOne'));
+    	   _.each(this.listaCategorie.models, $.proxy(this, 'addOne'));
     	  },
 
-    	  addOne: function (Prodotto) {
-    	    var view = new VBoxProdotto({
-    	      Prodotto: Prodotto
+    	  addOne: function (Categoria) {
+    	    var view = new VCategoria({
+    	      Categoria: Categoria
     	    });
     	    view.render();
     	    this.$el.append(view.el);
@@ -58,5 +56,3 @@ define (function(require) {
   });
   return VHome;
 });
-
-
