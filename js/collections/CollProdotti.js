@@ -10,7 +10,7 @@ define(function(require){
             url:"",                        
             
             setUrlProdottiHome : function () {
-                this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";               
+                this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";              
             },
             
             setUrlProdottiRicerca : function () {
