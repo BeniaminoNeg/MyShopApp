@@ -77,7 +77,7 @@ define (function(require) {
         
         checkPreferitoLocally: function(){
 	    	var currentfollowed = window.localStorage.getItem("followed");
-	    	if(!currentfollowe){
+	    	if(!currentfollowed){
 		    	var id = $(this.el).find('#id').text();
 		    	if (currentfollowed.search(id) != '-1'){
 		    		$(this.el).find('#tofollow').addClass("followed");
