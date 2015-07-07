@@ -77,11 +77,13 @@ define (function(require) {
         
         checkPreferitoLocally: function(){
 	    	var currentfollowed = window.localStorage.getItem("followed");
-	    	var id = $(this.el).find('#id').text();
-	    	if (currentfollowed.search(id) != '-1'){
-	    		$(this.el).find('#tofollow').addClass("followed");
-	    		$(this.el).find('#tofollow').children("span").removeClass("icon icon-star");
-	            $(this.el).find('#tofollow').children("span").addClass("icon icon-star-filled");
+	    	if(!currentfollowe){
+		    	var id = $(this.el).find('#id').text();
+		    	if (currentfollowed.search(id) != '-1'){
+		    		$(this.el).find('#tofollow').addClass("followed");
+		    		$(this.el).find('#tofollow').children("span").removeClass("icon icon-star");
+		            $(this.el).find('#tofollow').children("span").addClass("icon icon-star-filled");
+	        	}
         	}
         }
   });
