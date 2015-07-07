@@ -12,7 +12,7 @@ define(function(require) {
   var StructureView = require("views/StructureView");
   var VHome = require("views/pages/VHome");
   var VCategorie = require("views/pages/VCategorie");
-  var VMarket = require("views/pages/VMarket");
+  var VMarkets = require("views/pages/VMarket");
   var VRicerca = require("views/pages/VRicerca");
   var VSpotlight = require("views/pages/VSpotlight");
 
@@ -55,7 +55,6 @@ define(function(require) {
           // create the view
           var page = new VHome({
             listaProdotti: listaProdotti,
-            //listaSupermercati: listaSupermercati,
           });
           // show the view
           thisRouter.changePage(page);
@@ -80,7 +79,6 @@ define(function(require) {
 	           // create the view
 	           var page = new VSpotlight({
 	             listaProdotti: listaProdotti,
-	             //listaSupermercati: listaSupermercati,
 	           });
 	            //show the view
 	           thisRouter.changePage(page);
@@ -111,7 +109,6 @@ define(function(require) {
             // create the view
             var page = new VCategorie({
               listaCategorie: listaCategorie,
-              //listaSupermercati: listaSupermercati,
             });
             // show the view
             thisRouter.changePage(page);
@@ -120,13 +117,38 @@ define(function(require) {
     },
 
      Market: function() {
-
+         // highlight the nav1 tab bar element as the current one
+         this.structureView.setActiveTabBarElement("nav4");
+         //set title
+         this.structureView.setTitleContentElement("Market");
+         //hide the back button
+         this.structureView.setDisplayNoneBackBtnElement();
+         
+         var thisRouter = this;
+         
+         var listaSupermercati= new CollSupermercati();
+         listaSupermercati.setUrlSupermercati();
+         listaSupermercati.fetch().done(function(data){
+             // create the view
+             var page = new VMarkets({
+               listaSupermercati: listaSupermercati,
+             });
+             // show the view
+             thisRouter.changePage(page);
+         });
 
     },
 
     Ricerca: function() {
-
-    	
+        // highlight the nav1 tab bar element as the current one
+        this.structureView.setActiveTabBarElement("nav5");
+        //set title
+        this.structureView.setTitleContentElement("Ricerca");
+        //hide the back button
+        this.structureView.setDisplayNoneBackBtnElement();
+        
+        var page = new VRicerca();
+        this.changePage(page);    	
     },
 
     // load the structure view

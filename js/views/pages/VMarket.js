@@ -2,17 +2,18 @@ define (function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
   
-  var CollProdotti = require("../../collections/CollProdotti");
+  var MProdotto = require("../../models/MProdotto");
+  var MSupermercato = require("../../models/MSupermercato");
   
-  var VCategoria = Utils.Page.extend({
+  var VMarket = Utils.Page.extend({
       
-      constructorName: "VCategoria",
+      constructorName: "VMarket",
       
-      Categoria: MCategoria,
+      Supermercato: MSupermercato,
       
       initialize: function(options) {
-          this.template=Utils.templates.categoria;
-          this.Categoria= options.Categoria;
+          this.template=Utils.templates.market;
+          this.Supermercato= options.supermercato;
       },
       
       tagName: "li",
@@ -30,9 +31,9 @@ define (function(require) {
        
        viewProdotti: function(){
     	   
-    	   var categoria = this.$el.find('#nome').text();
+    	   var supermercato = this.$el.find('#nome').text();
     	   var listaProdotti = new CollProdotti();
-    	   listaProdotti.setUrlProdottiCategoria(categoria);
+    	   listaProdotti.setUrlProdottiSupermercato(supermercato);
            listaProdotti.fetch().done(function(data){
                // create the view
                var page = new VHome({
@@ -45,5 +46,5 @@ define (function(require) {
        }
        
   });
-  return VCategoria;
+  return VMarket;
 });

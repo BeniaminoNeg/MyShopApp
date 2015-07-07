@@ -18,7 +18,7 @@ define(function(require){
             
             setUrlProdottiCategoria: function(categoria){
             	this.url="http://localhost/MyShopWeb/index.php?func=CategorieProdotti&dati=" + categoria;
-            }
+            },
             
             setUrlProdottiRicerca : function (value) {
                 this.url="http://localhost/MyShopWeb/index.php?func=RicercaProdotto" + value;

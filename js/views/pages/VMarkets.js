@@ -6,21 +6,21 @@
 define (function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
-  var VCategoria = require("views/pages/VCategoria");
+  var VMarket = require("views/pages/VMarket");
   
-  var CollCategorie = require("../../collections/CollCategorie");
+  var CollSupermercati = require("../../collections/CollSupermercato");
   
-  var MCategoria = require("../../models/MCategoria");
+  var MSupermercato = require("../../models/MSupermercato");
 
-  var VCategorie = Utils.Page.extend({
+  var VMarkets = Utils.Page.extend({
       
-	  constructorName: "VCategorie",
+	  constructorName: "VMarkets",
 	  
-  	  listaCategorie: CollCategorie,
+  	  listaSupermercati: CollSupermercati,
 	  
       initialize: function(options) {
           this.template=Utils.templates.tabella;
-    	  this.listaCategorie = options.listaCategorie;
+    	  this.listaSupermecati = options.listaSupermecati
           
       },
       
@@ -42,17 +42,17 @@ define (function(require) {
     	    this.$el.find('ul').children().remove();
     	   //.models -> access to the JavaScript array of models inside of the collection
     	    //.proxy -> this è l'elemento della collection, che passiamo alla fun. addOne
-    	   _.each(this.listaCategorie.models, $.proxy(this, 'addOne'));
+    	   _.each(this.listaSupermercati.models, $.proxy(this, 'addOne'));
     	  },
 
-    	  addOne: function (Categoria) {
-    	    var view = new VCategoria({
-    	      Categoria: Categoria
+    	  addOne: function (Supermercato) {
+    	    var view = new VMarket({
+    	      Supermercato: Supermercato
     	    });
     	    view.render();
     	    this.$el.append(view.el);
     	  },
    
   });
-  return VCategorie;
+  return VMarkets;;
 });

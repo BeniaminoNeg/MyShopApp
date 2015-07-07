@@ -4,19 +4,18 @@ define (function(require) {
   
   var CollProdotti = require("../../collections/CollProdotti");
   
-  var VCategoria = Utils.Page.extend({
+  var VRicerca = Utils.Page.extend({
       
-      constructorName: "VCategoria",
+      constructorName: "VRicerca",
       
       Categoria: MCategoria,
       
       initialize: function(options) {
-          this.template=Utils.templates.categoria;
-          this.Categoria= options.Categoria;
+          this.template=Utils.templates.ricerca;
       },
       
-      tagName: "li",
-      className: "table-view-cell media",
+      tagName: "div",
+      className: "bar bar-standard bar-header-secondary",
 
       events: {
          "tap .table-view-cell media": "viewProdotti",
@@ -30,9 +29,9 @@ define (function(require) {
        
        viewProdotti: function(){
     	   
-    	   var categoria = this.$el.find('#nome').text();
+    	   var ricerca = this.$el.find('#ricerca').text();
     	   var listaProdotti = new CollProdotti();
-    	   listaProdotti.setUrlProdottiCategoria(categoria);
+    	   listaProdotti.setUrlProdottiRicerca(ricerca);
            listaProdotti.fetch().done(function(data){
                // create the view
                var page = new VHome({
@@ -45,5 +44,5 @@ define (function(require) {
        }
        
   });
-  return VCategoria;
+  return VRicerca;
 });
