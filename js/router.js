@@ -92,7 +92,7 @@ define(function(require) {
           // create the view
           var page = new VHome({
             listaProdotti: listaProdotti,
-            listaSupermercati: listaSupermercati,
+            //listaSupermercati: listaSupermercati,
           });
           // show the view
           thisRouter.changePage(page);
