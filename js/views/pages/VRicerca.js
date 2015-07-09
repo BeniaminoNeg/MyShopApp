@@ -8,9 +8,7 @@ define (function(require) {
   var VRicerca = Utils.Page.extend({
       
       constructorName: "VRicerca",
-      
-      Categoria: MCategoria,
-      
+            
       initialize: function(options) {
           this.template=Utils.templates.ricerca;
       },
