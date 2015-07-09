@@ -14,6 +14,6 @@ define(function(require) {
                 
         });
 
-        return Categoria;
+        return MCategoria;
         
 });

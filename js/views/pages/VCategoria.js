@@ -8,7 +8,7 @@ define (function(require) {
       
       constructorName: "VCategoria",
       
-      Categoria: MCategoria,
+      
       
       initialize: function(options) {
           this.template=Utils.templates.categoria;
@@ -23,7 +23,7 @@ define (function(require) {
        },
        
        render: function() {
-    	   this.$el.html(this.template(this.Prodotto.toJSON()));
+    	   this.$el.html(this.template());
     	   this.checkPreferitoLocally();
     	   return this;
        },

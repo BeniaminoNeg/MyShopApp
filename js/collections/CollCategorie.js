@@ -5,7 +5,7 @@ var MCategoria = require("../models/MCategoria");
 
 var CollCategorie = Backbone.Collection.extend({
 		constructorName: "CollCategorie",
-		model: MCategorie,
+		model: MCategoria,
                 
             setUrlCategorie: function () {
                 this.url = "http://localhost/MyShopWeb/index.php?func=Categorie";

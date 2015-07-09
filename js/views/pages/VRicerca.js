@@ -1,6 +1,7 @@
 define (function(require) {
   var Backbone = require("backbone");
   var Utils = require("utils");
+  var MCategoria = require("../../models/MCategoria");
   
   var CollProdotti = require("../../collections/CollProdotti");
   
