@@ -27,7 +27,7 @@ define(function(require) {
       "home":"Home",
       "spotlight":"Spotlight",
       "categorie": "Categorie",
-      "market": "Market",
+      "markets": "Markets",
       "ricerca" : "Ricerca"
       //note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
                                     //quindi la rotta utilizza il criterio del longest match!!!!!!!!!
@@ -46,20 +46,67 @@ define(function(require) {
       this.structureView.setTitleContentElement("Home");
       //hide the back button
       this.structureView.setDisplayNoneBackBtnElement();
+      /*
+      var listaProdotti = new CollProdotti([
+                                    		{
+                                    		  "Id":"009",
+                                    		  "Nome":"Riso Scotti ai funghi porcini",
+                                    		  "Immagine": "../img/es_prodotto.jpg",
+                                    		  "Descrizione":"Riso scotti ai funghi porcini 210g",
+                                    		  "Prezzo":"1.55",
+                                    		  "Ids":"00002"
+                                    		},
+                                    		  
+                                    		{
+                                    		  "Id":"010",
+                                    		  "Nome":"Riso scotti agli asparagi",
+                                    		  "Immagine": "../img/es_prodotto.jpg",
+                                    		  "Descrizione":"Riso scotti agli asparagi gr.210",
+                                    		  "Prezzo":"1.55",
+                                    		  "Ids":"00001"
+                                    		}
+                                    ]);
+
+                                    var listaSupermercati = new CollSupermercati([
+                                    	  {"Nome":"Tigre",
+                                    		  "Logo": "../img/es_logo.png",
+                                    		  "Indirizzo":{"Via":"Via Preturo",
+                                    			  					"Citt\u00e0":"Coppito",
+                                    			  					"NumeroCivico":null},
+                                    		  "Id":"00002"},
+                                    		  {"Nome":"Conad",
+                                    			  "Logo": "../img/es_logo.png",
+                                    			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
+                                    				 				   "Citt\u00e0":"L'Aquila",
+                                    				 				   "NumeroCivico":null},
+                                    			 "Id":"00001"}
+                                    		  ]);
+      */
       
-      var thisRouter = this;
-      
+       var thisRouter = this;
+
       var listaProdotti = new CollProdotti();
-      listaProdotti.setUrlProdottiHome();
-      listaProdotti.fetch().done(function(data){
+      var listaSupermercati = new CollSupermercati();
+      
+      $.when(function(data){
+    	  listaProdotti.setProdottiHome();
+    	  listaSupermercati.setSupHome();
+      }).then(function(data){
           // create the view
           var page = new VHome({
             listaProdotti: listaProdotti,
+            listaSupermercati: listaSupermercati
           });
           // show the view
           thisRouter.changePage(page);
       });
-
+      
+      
+      var page = new VHome({
+    	  listaProdotti: listaProdotti,
+    	  listaSupermercati: listaSupermercati
+      })
+      this.changePage(page);
     },
 
     Spotlight: function() {
@@ -72,10 +119,11 @@ define(function(require) {
 
        var currentFollowed = window.localStorage.getItem("followed");
        
+       var thisRouter = this;
+       
        if(currentFollowed != null){
     	   var listaProdotti = new CollProdotti();
-    	   listaProdotti.setUrlProdottiSpotlight(currentFollowed);
-	       listaProdotti.fetch().done(function(data){
+    	   $.when(listaProdotti.setProdottiSpotlight(currentFollowed)).then(function(data){
 	           // create the view
 	           var page = new VSpotlight({
 	             listaProdotti: listaProdotti,
@@ -104,8 +152,7 @@ define(function(require) {
         var thisRouter = this;
         
         var listaCategorie= new CollCategorie();
-        listaCategorie.setUrlCategorie();
-        listaCategorie.fetch().done(function(data){
+        $.when(listaCategorie.setCategorie()).then(function(data){
             // create the view
             var page = new VCategorie({
               listaCategorie: listaCategorie,
@@ -116,7 +163,7 @@ define(function(require) {
 
     },
 
-     Market: function() {
+     Markets: function() {
          // highlight the nav1 tab bar element as the current one
          this.structureView.setActiveTabBarElement("nav4");
          //set title
@@ -127,8 +174,7 @@ define(function(require) {
          var thisRouter = this;
          
          var listaSupermercati= new CollSupermercati();
-         listaSupermercati.setUrlSupermercati();
-         listaSupermercati.fetch().done(function(data){
+         $.when(listaSupermercati.setSupermercati()).then(function(data){
              // create the view
              var page = new VMarkets({
                listaSupermercati: listaSupermercati,

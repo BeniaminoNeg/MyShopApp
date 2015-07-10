@@ -9,9 +9,15 @@ var CollSupermercati = Backbone.Collection.extend({
 		constructorName: "CollSupermercati",
 		model: MSupermercato,
                 
-            setUrlSupMarket: function (listaProdotti) {
+            setSupMarket: function (listaProdotti) {
                 this.url = "http://localhost/MyShopWeb/index.php?func=Market";
-            }
+                this.fetch;
+            },
+
+			setSupHome: function (IdsSups) {
+			    this.url = "http://localhost/MyShopWeb/index.php?func=HomeSup&dati=" + IdsSup ;
+			    this.fetch;
+			}
 	});
 
 return CollSupermercati;

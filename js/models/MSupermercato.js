@@ -2,62 +2,21 @@ define(function(require) {
 
 	var Backbone = require("backbone");
 	var Indirizzo = require("models/MIndirizzo");
-	var Prodotto = require ("models/MProdotto");
 
-	var MSupermercato = Backbone.Model.extend({
-		defaults: {
-			Nome: '',
-			Catalogo: '',
-			Logo: '',
-			Indirizzo: '',
-			Id: ''
-		},
-		constructorName: "MSupermercato",
-
-		initialize: function (){},
+        var MSupermercato = Backbone.Model.extend({
+	    		defaults: {
+	    			Nome: '',
+	    			Logo: '',
+	    			Indirizzo: '',
+	    			Id: ''
+	    		},
                 
-		addProdotto: function (Prodotto) {
-			var IdCercato= Prodotto.Id;
-			if (this.VerificaProdotto(IdCercato) === false)
-				{
-				Lunghezza = this.Catalogo.length;
-				this.Catalogo[Lunghezza]=Prodotto;
-				}
-		},
+                constructorName: "MSupermercato",
 
-		getProdotto: function (IdProdotto) {
-			prodottocercato = false;
-			for (var value in this.Catalogo)
-			{
-				if (Typeof(value) !== null)
-				{
-					if (value.Id === IdProdotto)
-					{
-						prodottocercato = value;
-					}
-				}
-
-			}
-			return prodottocercato;
-		},
-
-		VerificaProdotto: function (IdProdotto) {
-			prodottotrovato = false;
-			for (var value in this.Catalogo)
-			{
-				if (Typeof(value) !== null)
-				{
-					if (value.Id === IdProdotto)
-					{
-						prodottotrovato=true;
-					}
-				}
-
-			}
-			return prodottotrovato;
-		}
+                initialize: function (){},
                 
-                });
-                
-		return MSupermercato;
-	});
+        });
+
+        return MSupermercato;
+        
+});

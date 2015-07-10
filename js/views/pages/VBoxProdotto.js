@@ -10,10 +10,12 @@ define (function(require) {
       constructorName: "VBoxProdotto",
       
       Prodotto: MProdotto,
+      Supermercato: MSupermercato,
       
       initialize: function(options) {
-          this.template=Utils.templates.prodotto;
-          this.Prodotto= options.Prodotto;
+          this.template =Utils.templates.prodotto;
+          this.Prodotto = options.Prodotto;
+          this.Supermercato = options.Supermercato;
       },
       
       tagName: "li",
@@ -26,7 +28,9 @@ define (function(require) {
        },
        
        render: function() {
-    	   this.$el.html(this.template(this.Prodotto.toJSON()));
+    	   var JSON = this.Prodotto.toJSON();
+    	   JSON["Supermercato"] = this.Supermercato["0"].toJSON();
+    	   this.$el.html(this.template(JSON));
     	   this.checkPreferitoLocally();
     	   return this;
        },       

@@ -29,8 +29,7 @@ define (function(require) {
     	   
     	   var ricerca = this.$el.find('#ricerca').text();
     	   var listaProdotti = new CollProdotti();
-    	   listaProdotti.setUrlProdottiRicerca(ricerca);
-           listaProdotti.fetch().done(function(data){
+    	   $.when(listaProdotti.setProdottiRicerca(ricerca)).then(function(data){
                // create the view
                var page = new VHome({
                  listaProdotti: listaProdotti,

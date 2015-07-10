@@ -8,20 +8,24 @@ define(function(require){
 			constructorName: "CollProdotti",
 			model: MProdotto,
 			
-            setUrlProdottiHome : function () {
-                this.url="http://localhost/MyShopWeb/index.php?func=HomeProdotti";              
+            setProdottiHome : function () {
+                this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";
+                this.fetch;
             },
             
-            setUrlProdottiSpotlight : function(followed){
+            setProdottiSpotlight : function(followed){
             	this.url="http://localhost/MyShopWeb/index.php?func=SpotlightProdotti&dati=" + followed;
+            	this.fetch;
             },
             
-            setUrlProdottiCategoria: function(categoria){
+            setProdottiCategoria: function(categoria){
             	this.url="http://localhost/MyShopWeb/index.php?func=CategorieProdotti&dati=" + categoria;
+            	this.fetch;
             },
             
-            setUrlProdottiRicerca : function (value) {
+            setProdottiRicerca : function (value) {
                 this.url="http://localhost/MyShopWeb/index.php?func=RicercaProdotto" + value;
+                this.fetch;
             },
             
             getIdsProdotti: function(){

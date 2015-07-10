@@ -12,6 +12,7 @@ define (function(require) {
   var CollSupermercati = require("../../collections/CollSupermercati");
   
   var MProdotto = require("../../models/MProdotto");
+  var MSupermercato = require("../../models/MSupermercato");
 
   var VHome = Utils.Page.extend({
       
@@ -48,8 +49,10 @@ define (function(require) {
     	  },
 
     	  addOne: function (Prodotto) {
+    		var Supermercato = this.listaSupermercati.where({Id: Prodotto.get("Ids")});
     	    var view = new VBoxProdotto({
-    	      Prodotto: Prodotto
+    	      Prodotto: Prodotto,
+    	      Supermercato: Supermercato,
     	    });
     	    view.render();
     	    this.$el.append(view.el);

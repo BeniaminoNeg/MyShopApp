@@ -9,7 +9,7 @@ define(function(require) {
 					Immagine: '',
 					Descrizione: '',
 					Prezzo: '',
-					SupermercatoId: ''
+					Ids: ''
                 },
                 
                 constructorName: "MProdotto",

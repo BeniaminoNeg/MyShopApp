@@ -34,8 +34,7 @@ define (function(require) {
     	   
     	   var categoria = this.$el.find('#nome').text();
     	   var listaProdotti = new CollProdotti();
-    	   listaProdotti.setUrlProdottiCategoria(categoria);
-           listaProdotti.fetch().done(function(data){
+    	   $.when(listaProdotti.setProdottiCategoria(categoria)).then(function(data){
                // create the view
                var page = new VHome({
                  listaProdotti: listaProdotti,

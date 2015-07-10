@@ -33,8 +33,7 @@ define (function(require) {
     	   
     	   var supermercato = this.$el.find('#nome').text();
     	   var listaProdotti = new CollProdotti();
-    	   listaProdotti.setUrlProdottiSupermercato(supermercato);
-           listaProdotti.fetch().done(function(data){
+    	   $.when(listaProdotti.setProdottiSupermercato(supermercato)).then(function(data){
                // create the view
                var page = new VHome({
                  listaProdotti: listaProdotti,
