@@ -15,7 +15,7 @@ define (function(require) {
       initialize: function(options) {
           this.template =Utils.templates.prodotto;
           this.Prodotto = options.Prodotto;
-          this.Supermercato = options.Supermercato;
+          this.Supermercato = options.Supermercato["0"];
       },
       
       tagName: "li",
@@ -29,9 +29,10 @@ define (function(require) {
        
        render: function() {
     	   var JSON = this.Prodotto.toJSON();
-    	   JSON["Supermercato"] = this.Supermercato["0"].toJSON();
+    	   JSON["Supermercato"] = this.Supermercato.toJSON();
     	   this.$el.html(this.template(JSON));
     	   this.checkPreferitoLocally();
+    	   this.getImmagini();
     	   return this;
        },       
        
@@ -89,6 +90,20 @@ define (function(require) {
 		            $(this.el).find('#tofollow').children("span").addClass("icon icon-star-filled");
 	        	}
         	}
+        },
+        
+        getImmagini: function(){
+        	var id = this.Prodotto.get("Id");
+        	var ids = this.Supermercato.get("Ids");
+        	var url = "http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=" + id;
+        	$.getJSON(url, function(data){
+        		$(this.el).find('#imgProd').attr( "src", data);
+        		url = "http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=" + ids;
+            	$.getJSON(url, function(data){
+            		$(this.el).find('#imgSup').attr( "src", data);
+            	})
+        	})
+        	
         }
   });
   return VBoxProdotto;

@@ -204,7 +204,6 @@ define(function(require) {
          	  })
            });   	   
        }else{
-    	   console.log(currentFollowed);
     	   var page = new VSpotlight({
     		   currentFollowed : "niente",
     	   });
