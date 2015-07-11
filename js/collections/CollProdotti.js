@@ -10,34 +10,38 @@ define(function(require){
 			
             setProdottiHome : function () {
                 this.url="http://localhost/MyShopWeb/index.php?func=HomeProd";
-                this.fetch;
             },
             
             setProdottiSpotlight : function(followed){
-            	this.url="http://localhost/MyShopWeb/index.php?func=SpotlightProdotti&dati=" + followed;
-            	this.fetch;
+            	this.url="http://localhost/MyShopWeb/index.php?func=SpotProdApp&dati=" + followed;
             },
             
             setProdottiCategoria: function(categoria){
             	this.url="http://localhost/MyShopWeb/index.php?func=CategorieProdotti&dati=" + categoria;
-            	this.fetch;
             },
             
             setProdottiRicerca : function (value) {
                 this.url="http://localhost/MyShopWeb/index.php?func=RicercaProdotto" + value;
-                this.fetch;
             },
             
             getIdsProdotti: function(){
             	var i = 0;
-            	var stringIds;
+            	var arrayIds = [];
+            	var stringIds = "";
             	while(this.at(i)){
-            		stringIds += this.at(i).get("Ids") + ","; //nel caso di piu prodotti da medesimo Sup avremo piu id uguali
-            		i++;
+                		if (!this.isInArray(this.at(i).get("SupermercatoId"), arrayIds)) {
+                			stringIds += this.at(i).get("SupermercatoId") + ",";
+                    		arrayIds[i] = this.at(i).get("SupermercatoId"); 
+                		}
+                		i++;
             	}
             	return stringIds;
+            },
+             
+            isInArray: function(valore, array){
+            	return array.indexOf(valore) > -1;
             }
-                       
+            
 		});
 
 	return CollProdotti;

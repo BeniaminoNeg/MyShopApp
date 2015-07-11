@@ -11,12 +11,10 @@ var CollSupermercati = Backbone.Collection.extend({
                 
             setSupMarket: function (listaProdotti) {
                 this.url = "http://localhost/MyShopWeb/index.php?func=Market";
-                this.fetch;
             },
 
 			setSupHome: function (IdsSups) {
-			    this.url = "http://localhost/MyShopWeb/index.php?func=HomeSup&dati=" + IdsSup ;
-			    this.fetch;
+			    this.url = "http://localhost/MyShopWeb/index.php?func=HomeSup&dati=" + IdsSups;
 			}
 	});
 

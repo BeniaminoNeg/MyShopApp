@@ -8,7 +8,7 @@ define(function(require) {
 	    			Nome: '',
 	    			Logo: '',
 	    			Indirizzo: '',
-	    			Id: ''
+	    			Ids: ''
 	    		},
                 
                 constructorName: "MSupermercato",

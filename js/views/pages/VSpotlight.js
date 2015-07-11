@@ -24,6 +24,7 @@ define (function(require) {
       initialize: function(options) {
     	  this.listaProdotti= options.listaProdotti;
     	  this.listaSupermercati= options.listaSupermercati;
+    	  this.currentFollowed = options.currentFollowed;
           
       },
       
@@ -37,7 +38,8 @@ define (function(require) {
       
        render: function() {
     	   this.$el.find('ul').children().remove();
-    	   if(this.currentFollowed == null){
+    	   console.log(this.currentFollowed);
+    	   if(this.currentFollowed == "niente"){
     		   this.noFollowed();
     	   }else{
     		   this.addAll();

@@ -66,7 +66,7 @@ define (function(require) {
        },
        
        addPreferitoLocally: function(toFollow) {
-        var currentFollowed = window.localStorage.getItem("followed");//memoria locale
+        var currentFollowed = window.localStorage.getItem("followed");
         currentFollowed += toFollow;
         currentFollowed += ',';
         window.localStorage.setItem("followed", currentFollowed);

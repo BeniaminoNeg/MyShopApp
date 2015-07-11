@@ -49,7 +49,7 @@ define (function(require) {
     	  },
 
     	  addOne: function (Prodotto) {
-    		var Supermercato = this.listaSupermercati.where({Id: Prodotto.get("Ids")});
+    		var Supermercato = this.listaSupermercati.where({Ids: Prodotto.get("SupermercatoId")});
     	    var view = new VBoxProdotto({
     	      Prodotto: Prodotto,
     	      Supermercato: Supermercato,

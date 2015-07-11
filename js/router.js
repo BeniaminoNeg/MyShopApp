@@ -66,9 +66,10 @@ define(function(require) {
                                     		  "Ids":"00001"
                                     		}
                                     ]);
-
+*//*
                                     var listaSupermercati = new CollSupermercati([
-                                    	  {"Nome":"Tigre",
+                                    	  {
+                                    	  	  "Nome":"Tigre",
                                     		  "Logo": "../img/es_logo.png",
                                     		  "Indirizzo":{"Via":"Via Preturo",
                                     			  					"Citt\u00e0":"Coppito",
@@ -79,18 +80,68 @@ define(function(require) {
                                     			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
                                     				 				   "Citt\u00e0":"L'Aquila",
                                     				 				   "NumeroCivico":null},
-                                    			 "Id":"00001"}
+                                    			 "Id":"00003"},
+                                    			 {"Nome":"Conad",
+                                       			  "Logo": "../img/es_logo.png",
+                                       			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
+                                       				 				   "Citt\u00e0":"L'Aquila",
+                                       				 				   "NumeroCivico":null},
+                                       			 "Id":"00004"},
+                                       			{"Nome":"Conad",
+                                       			  "Logo": "../img/es_logo.png",
+                                       			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
+                                       				 				   "Citt\u00e0":"L'Aquila",
+                                       				 				   "NumeroCivico":null},
+                                       			 "Id":"00005"},
+                                       			{"Nome":"Conad",
+                                       			  "Logo": "../img/es_logo.png",
+                                       			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
+                                       				 				   "Citt\u00e0":"L'Aquila",
+                                       				 				   "NumeroCivico":null},
+                                       			 "Id":"00006"},
+                                       			{"Nome":"Conad",
+                                       			  "Logo": "../img/es_logo.png",
+                                       			 "Indirizzo":{"Via":"Via Giuseppe Saragat",
+                                       				 				   "Citt\u00e0":"L'Aquila",
+                                       				 				   "NumeroCivico":null},
+                                       			 "Id":"00001"}
                                     		  ]);
-      */
       
-       var thisRouter = this;
+      */
+       //var thisRouter = this;
 
       var listaProdotti = new CollProdotti();
       var listaSupermercati = new CollSupermercati();
       
-      $.when(function(data){
+      /*$.when(listaProdotti.setProdottiHome()).then();
+      
+      console.log(listaProdotti.getIdsProdotti());
+      
+      var IdSupString = listaProdotti.getIdsProdotti();
+      
+      $.when(listaSupermercati.setSupHome(IdSupString)).then();
+      */
+      
+      var thisRouter = this;
+      
+      listaProdotti.setProdottiHome();
+      listaProdotti.fetch().done(function(data){
+    	  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+    	  listaSupermercati.setSupHome(IdsProdotti);
+    	  listaSupermercati.fetch().done(function(data){
+              // create the view
+              var page = new VHome({
+                listaProdotti: listaProdotti,
+                listaSupermercati: listaSupermercati
+              });
+              // show the view
+              thisRouter.changePage(page);
+    	  })
+      });
+      
+      /*$.when(function(data){
     	  listaProdotti.setProdottiHome();
-    	  listaSupermercati.setSupHome();
+    	  //listaSupermercati.setSupHome();
       }).then(function(data){
           // create the view
           var page = new VHome({
@@ -100,13 +151,25 @@ define(function(require) {
           // show the view
           thisRouter.changePage(page);
       });
-      
-      
-      var page = new VHome({
+ 
+   /*   
+      listaProdotti.setProdottiHome();
+      listaProdotti.fetch().done(function(data){
+          // create the view
+          var page = new VHome({
+            listaProdotti: listaProdotti,
+            listaSupermercati: listaSupermercati
+          });
+          // show the view
+          thisRouter.changePage(page);
+      });
+     */
+      /*var page = new VHome({
     	  listaProdotti: listaProdotti,
     	  listaSupermercati: listaSupermercati
       })
       this.changePage(page);
+      */
     },
 
     Spotlight: function() {
@@ -121,19 +184,29 @@ define(function(require) {
        
        var thisRouter = this;
        
-       if(currentFollowed != null){
+       if(currentFollowed != ""){
+    	   
     	   var listaProdotti = new CollProdotti();
-    	   $.when(listaProdotti.setProdottiSpotlight(currentFollowed)).then(function(data){
-	           // create the view
-	           var page = new VSpotlight({
-	             listaProdotti: listaProdotti,
-	           });
-	            //show the view
-	           thisRouter.changePage(page);
-	       });
+    	   var listaSupermercati = new CollSupermercati();    	   
+           
+    	   listaProdotti.setProdottiSpotlight(currentFollowed);
+           listaProdotti.fetch().done(function(data){
+         	  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+         	  listaSupermercati.setSupHome(IdsProdotti);
+         	  listaSupermercati.fetch().done(function(data){
+                   // create the view
+                   var page = new VHome({
+                     listaProdotti: listaProdotti,
+                     listaSupermercati: listaSupermercati
+                   });
+                   // show the view
+                   thisRouter.changePage(page);
+         	  })
+           });   	   
        }else{
+    	   console.log(currentFollowed);
     	   var page = new VSpotlight({
-    		   currentFollowed : null,
+    		   currentFollowed : "niente",
     	   });
     	   thisRouter.changePage(page);
        }
