@@ -38,7 +38,6 @@ define (function(require) {
       
        render: function() {
     	   this.$el.find('ul').children().remove();
-    	   console.log(this.currentFollowed);
     	   if(this.currentFollowed == "niente"){
     		   this.noFollowed();
     	   }else{

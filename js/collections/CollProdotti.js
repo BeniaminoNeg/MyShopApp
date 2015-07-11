@@ -21,7 +21,7 @@ define(function(require){
             },
             
             setProdottiRicerca : function (value) {
-                this.url="http://localhost/MyShopWeb/index.php?func=RicercaProdotto" + value;
+                this.url="http://localhost/MyShopWeb/index.php?func=RicercaProdotto&dati=" + value;
             },
             
             getIdsProdotti: function(){

@@ -35,14 +35,14 @@ define (function(require) {
     	  
        },
        render: function() {
-    	   this.$el.find('ul').children().remove();
+    	   this.$el.find('#tabella').remove();
     	   this.addAll();
     	   return this;
        },
        
        addAll: function () {
     	    // clear out the container each time you render index (find,children, remove -> tutte fun. jquery/zepto)
-    	    this.$el.find('ul').children().remove();
+    	    this.$el.find('#tabella').children().remove();
     	   //.models -> access to the JavaScript array of models inside of the collection
     	    //.proxy -> this è l'elemento della collection, che passiamo alla fun. addOne
     	   _.each(this.listaProdotti.models, $.proxy(this, 'addOne'));

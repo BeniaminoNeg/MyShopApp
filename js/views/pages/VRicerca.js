@@ -3,6 +3,10 @@ define (function(require) {
   var Utils = require("utils");
   
   var CollProdotti = require("../../collections/CollProdotti");
+  var CollSupermercati = require("../../collections/CollSupermercati");
+
+  
+  var VHome = require("views/pages/VHome");
   
   var VRicerca = Utils.Page.extend({
       
@@ -16,27 +20,39 @@ define (function(require) {
       className: "bar bar-standard bar-header-secondary",
 
       events: {
-         "tap .table-view-cell media": "viewProdotti",
+         "tap #ricerca": "ricercaProdotti",
        },
        
        render: function() {
-    	   this.$el.html(this.template(this.Prodotto.toJSON()));
-    	   this.checkPreferitoLocally();
+    	   this.$el.html(this.template());
     	   return this;
        },
        
-       viewProdotti: function(){
+       ricercaProdotti: function(){
+    	   this.$el.find('#tabella').remove();
     	   
-    	   var ricerca = this.$el.find('#ricerca').text();
-    	   var listaProdotti = new CollProdotti();
-    	   $.when(listaProdotti.setProdottiRicerca(ricerca)).then(function(data){
-               // create the view
-               var page = new VHome({
-                 listaProdotti: listaProdotti,
-               });
-               // show the view
-               thisRouter.changePage(page);
-           });
+    	   var ricerca = this.$el.find('#value').attr('value');
+    	   
+    	      var listaProdotti = new CollProdotti();
+    	      var listaSupermercati = new CollSupermercati();
+
+    	      var thisView = this;
+    	      
+       	      listaProdotti.setProdottiRicerca(ricerca);
+    	      listaProdotti.fetch().done(function(data){
+    	    	  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+    	    	  listaSupermercati.setSupHome(IdsProdotti);
+    	    	  listaSupermercati.fetch().done(function(data){
+    	              // create the view
+    	              var view = new VHome({
+    	                listaProdotti: listaProdotti,
+    	                listaSupermercati: listaSupermercati
+    	              });
+    	              // show the view
+    	      	    view.render();
+    	    	    thisView.$el.append(view.el);
+    	    	  })
+    	      });
     	   
        }
        
