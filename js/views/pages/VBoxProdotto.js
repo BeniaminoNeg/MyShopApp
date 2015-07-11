@@ -96,11 +96,12 @@ define (function(require) {
         	var id = this.Prodotto.get("Id");
         	var ids = this.Supermercato.get("Ids");
         	var url = "http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=" + id;
+        	var thisView = this;
         	$.getJSON(url, function(data){
-        		$(this.el).find('#imgProd').attr( "src", data);
+        		$(thisView.el).find('#imgProd').attr( "src", data);
         		url = "http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=" + ids;
             	$.getJSON(url, function(data){
-            		$(this.el).find('#imgSup').attr( "src", data);
+            		$(thisView.el).find('#imgSup').attr( "src", data);
             	})
         	})
         	
