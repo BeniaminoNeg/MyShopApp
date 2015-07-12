@@ -113,15 +113,6 @@ define(function(require) {
       var listaProdotti = new CollProdotti();
       var listaSupermercati = new CollSupermercati();
       
-      /*$.when(listaProdotti.setProdottiHome()).then();
-      
-      console.log(listaProdotti.getIdsProdotti());
-      
-      var IdSupString = listaProdotti.getIdsProdotti();
-      
-      $.when(listaSupermercati.setSupHome(IdSupString)).then();
-      */
-      
       var thisRouter = this;
       
       listaProdotti.setProdottiHome();
@@ -139,7 +130,8 @@ define(function(require) {
     	  })
       });
       
-      /*$.when(function(data){
+/*
+ 		  $.when(function(data){
     	  listaProdotti.setProdottiHome();
     	  //listaSupermercati.setSupHome();
       }).then(function(data){
@@ -151,25 +143,7 @@ define(function(require) {
           // show the view
           thisRouter.changePage(page);
       });
- 
-   /*   
-      listaProdotti.setProdottiHome();
-      listaProdotti.fetch().done(function(data){
-          // create the view
-          var page = new VHome({
-            listaProdotti: listaProdotti,
-            listaSupermercati: listaSupermercati
-          });
-          // show the view
-          thisRouter.changePage(page);
-      });
-     */
-      /*var page = new VHome({
-    	  listaProdotti: listaProdotti,
-    	  listaSupermercati: listaSupermercati
-      })
-      this.changePage(page);
-      */
+*/
     },
 
     Spotlight: function() {
@@ -178,7 +152,7 @@ define(function(require) {
         //set title
         this.structureView.setTitleContentElement("Spotlight");
         //hide the back button
-        this.structureView.setDisplayNoneBackBtnElement();
+        this.structureView.setDisplayBackBtnElement();
 
        var currentFollowed = window.localStorage.getItem("followed");
        
@@ -219,12 +193,13 @@ define(function(require) {
         //set title
         this.structureView.setTitleContentElement("Categorie");
         //hide the back button
-        this.structureView.setDisplayNoneBackBtnElement();
+        this.structureView.setDisplayBackBtnElement();
         
         var thisRouter = this;
         
         var listaCategorie= new CollCategorie();
-        $.when(listaCategorie.setCategorie()).then(function(data){
+        listaCategorie.setCategorie();
+        listaCategorie.fetch().done(function(data){
             // create the view
             var page = new VCategorie({
               listaCategorie: listaCategorie,
@@ -241,12 +216,13 @@ define(function(require) {
          //set title
          this.structureView.setTitleContentElement("Market");
          //hide the back button
-         this.structureView.setDisplayNoneBackBtnElement();
+         this.structureView.setDisplayBackBtnElement();
          
          var thisRouter = this;
          
          var listaSupermercati= new CollSupermercati();
-         $.when(listaSupermercati.setSupermercati()).then(function(data){
+         listaSupermercati.setSupermercati();
+         listaSupermercati.fetch().done(function(data){
              // create the view
              var page = new VMarkets({
                listaSupermercati: listaSupermercati,
@@ -263,7 +239,7 @@ define(function(require) {
         //set title
         this.structureView.setTitleContentElement("Ricerca");
         //hide the back button
-        this.structureView.setDisplayNoneBackBtnElement();
+        this.structureView.setDisplayBackBtnElement();
         
         var page = new VRicerca();
         this.changePage(page);    	

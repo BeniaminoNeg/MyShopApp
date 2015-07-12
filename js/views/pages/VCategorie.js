@@ -25,7 +25,7 @@ define (function(require) {
       },
       
       tagName: "ul",
-      id: "tabella",
+      id: "tabellaCategorie",
       className: "table-view",
 
       events: {

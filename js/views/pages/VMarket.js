@@ -18,9 +18,10 @@ define (function(require) {
       
       tagName: "li",
       className: "table-view-cell media",
+      id: "market",
 
       events: {
-         "tap .table-view-cell media": "viewProdotti",
+         "tap #market": "viewProdotti",
        },
        
        render: function() {
@@ -30,17 +31,26 @@ define (function(require) {
        },
        
        viewProdotti: function(){
+    	   this.$el.find('#tabellaMarkets').remove();
     	   
-    	   var supermercato = this.$el.find('#nome').text();
-    	   var listaProdotti = new CollProdotti();
-    	   $.when(listaProdotti.setProdottiSupermercato(supermercato)).then(function(data){
-               // create the view
-               var page = new VHome({
-                 listaProdotti: listaProdotti,
-               });
-               // show the view
-               thisRouter.changePage(page);
-           });
+    	   var market = this.Supermercato.get('Ids');
+    	   
+    	      var listaProdotti = new CollProdotti();
+    	      var listaSupermercati = new CollSupermercati();
+
+    	      var thisView = this;
+    	      
+       	      listaProdotti.setProdottiSupermercato(market);
+    	      listaProdotti.fetch().done(function(data){
+	    	  listaSupermercati.add(this.Supermercato);
+
+	              var view = new VHome({
+	                listaProdotti: listaProdotti,
+	                listaSupermercati: listaSupermercati
+	              });
+	      	    view.render();
+	    	    thisView.$el.append(view.el);
+	    	  });
     	   
        }
        

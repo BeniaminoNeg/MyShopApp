@@ -19,9 +19,10 @@ define (function(require) {
       
       tagName: "li",
       className: "table-view-cell media",
+      id: "categoria",
 
       events: {
-         "tap .table-view-cell media": "viewProdotti",
+         "tap #categoria": "viewProdotti",
        },
        
        render: function() {
@@ -31,17 +32,30 @@ define (function(require) {
        },
        
        viewProdotti: function(){
+    	   this.$el.find('#tabellaCategorie').remove();
     	   
-    	   var categoria = this.$el.find('#nome').text();
-    	   var listaProdotti = new CollProdotti();
-    	   $.when(listaProdotti.setProdottiCategoria(categoria)).then(function(data){
-               // create the view
-               var page = new VHome({
-                 listaProdotti: listaProdotti,
-               });
-               // show the view
-               thisRouter.changePage(page);
-           });
+    	   var categoria = this.Categoria.get('Nome');
+    	   
+    	      var listaProdotti = new CollProdotti();
+    	      var listaSupermercati = new CollSupermercati();
+
+    	      var thisView = this;
+    	      
+       	      listaProdotti.setProdottiCategoria(categoria);
+    	      listaProdotti.fetch().done(function(data){
+    	    	  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+    	    	  listaSupermercati.setSupHome(IdsProdotti);
+    	    	  listaSupermercati.fetch().done(function(data){
+    	              // create the view
+    	              var view = new VHome({
+    	                listaProdotti: listaProdotti,
+    	                listaSupermercati: listaSupermercati
+    	              });
+    	              // show the view
+    	      	    view.render();
+    	    	    thisView.$el.append(view.el);
+    	    	  })
+    	      });
     	   
        }
        
