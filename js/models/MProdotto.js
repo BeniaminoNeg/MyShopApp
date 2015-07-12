@@ -1,23 +1,20 @@
 define(function(require) {
+	var Backbone = require('backbone');
 
-	var Backbone = require("backbone");
-
-        var MProdotto = Backbone.Model.extend({
-                defaults: {
-                    Id: '',
-					Nome: '',
-					Immagine: '',
-					Descrizione: '',
-					Prezzo: '',
-					SupermercatoId: ''
-                },
+	var MProdotto = Backbone.Model.extend({
+		defaults: {
+	        Id: '',
+			Nome: '',
+			Immagine: '',
+			Descrizione: '',
+			Prezzo: '',
+			SupermercatoId: ''
+	    },
                 
-                constructorName: "MProdotto",
+	    constructorName: 'MProdotto',
 
-                initialize: function (){},
-                
-        });
+	    initialize: function (){},
+	});
 
-        return MProdotto;
-        
+	return MProdotto;    
 });

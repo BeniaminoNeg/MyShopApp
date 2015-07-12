@@ -1,19 +1,16 @@
 define(function(require) {
+	var Backbone = require('backbone');
 
-	var Backbone = require("backbone");
-
-        var MCategoria = Backbone.Model.extend({
-                defaults: {
-                	Nome: "",
-                	Immagine: "",
-                },
+	var MCategoria = Backbone.Model.extend({
+		defaults: {
+			Nome: '',
+			Immagine: '',
+		},
                 
-                constructorName: "Categoria",
+		constructorName: 'Categoria',
 
-                initialize: function (){},
-                
-        });
+		initialize: function (){},
+	});
 
-        return MCategoria;
-        
+	return MCategoria;
 });

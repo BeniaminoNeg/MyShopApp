@@ -1,22 +1,20 @@
 define(function(require) {
+	var Backbone = require('backbone');
+	
+	var Indirizzo = require('models/MIndirizzo');
 
-	var Backbone = require("backbone");
-	var Indirizzo = require("models/MIndirizzo");
-
-        var MSupermercato = Backbone.Model.extend({
-	    		defaults: {
-	    			Nome: '',
-	    			Logo: '',
-	    			Indirizzo: '',
-	    			Ids: ''
-	    		},
+	var MSupermercato = Backbone.Model.extend({
+		defaults: {
+			Nome: '',
+			Logo: '',
+			Indirizzo: '',
+			Ids: ''
+		},
                 
-                constructorName: "MSupermercato",
+		constructorName: 'MSupermercato',
 
-                initialize: function (){},
-                
-        });
+		initialize: function (){},
+	});
 
-        return MSupermercato;
-        
+	return MSupermercato;
 });

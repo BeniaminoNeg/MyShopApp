@@ -1,6 +1,5 @@
 define(function(require) {
-
-	var Backbone = require("backbone");
+	var Backbone = require('backbone');
 
 	var MIndirizzo = Backbone.Model.extend({
 		defaults: {
@@ -8,10 +7,11 @@ define(function(require) {
 			Città: '',
 			NumeroCivico: ''
 		},
-		constructorName: "MIndirizzo",
+		
+		constructorName: 'MIndirizzo',
 
 		initialize: function (){}
-        });
-		
-        return MIndirizzo;
+	});
+	
+	return MIndirizzo;
 });

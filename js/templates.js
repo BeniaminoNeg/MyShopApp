@@ -9,9 +9,9 @@
 //  - key: the name of the template as it must be referenced by the Backbone view
 //  - value: the path of the html file containing the HTML fragment of the template
 define({
-    structure: "../templates/structure.html",
-    categoria: "../templates/categoria.html",
-    market:  "../templates/categoria.html",
-    prodotto:  "../templates/prodotto.html",
-    ricerca: "../templates/ricerca.html",
+	structure: '../templates/structure.html',
+    categoria: '../templates/categoria.html',
+    market:  '../templates/categoria.html',
+    prodotto:  '../templates/prodotto.html',
+    ricerca: '../templates/ricerca.html',
 });

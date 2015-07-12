@@ -1,64 +1,60 @@
 define (function(require) {
-  var Backbone = require("backbone");
-  var Utils = require("utils");
+	var Backbone = require('backbone');
+	var Utils = require('utils');
   
-  var MCategoria = require("../../models/MCategoria");
+	var MCategoria = require('../../models/MCategoria');
   
-  var CollProdotti = require("../../collections/CollProdotti");
+	var CollProdotti = require('../../collections/CollProdotti');
   
-  var VCategoria = Utils.Page.extend({
+	var VCategoria = Utils.Page.extend({
+		constructorName: 'VCategoria',
       
-      constructorName: "VCategoria",
+		Categoria: MCategoria,
       
-      Categoria: MCategoria,
+		initialize: function(options) {
+			this.template=Utils.templates.categoria;
+			this.Categoria= options.Categoria;
+		},
       
-      initialize: function(options) {
-          this.template=Utils.templates.categoria;
-          this.Categoria= options.Categoria;
-      },
-      
-      tagName: "li",
-      className: "table-view-cell media",
-      id: "categoria",
+		tagName: 'li',
+		className: 'table-view-cell media',
+		id: 'categoria',
 
-      events: {
-         "tap #categoria": "viewProdotti",
-       },
+		events: {
+			'tap #categoria': 'viewProdotti',
+		},
        
-       render: function() {
-    	   this.$el.html(this.template(this.Prodotto.toJSON()));
-    	   this.checkPreferitoLocally();
-    	   return this;
-       },
+		render: function() {
+			this.$el.html(this.template(this.Prodotto.toJSON()));
+			this.checkPreferitoLocally();
+			return this;
+		},
        
-       viewProdotti: function(){
-    	   this.$el.find('#tabellaCategorie').remove();
+		viewProdotti: function() {
+			this.$el.find('#tabellaCategorie').remove();
     	   
-    	   var categoria = this.Categoria.get('Nome');
+			var categoria = this.Categoria.get('Nome');
     	   
-    	      var listaProdotti = new CollProdotti();
-    	      var listaSupermercati = new CollSupermercati();
+			var listaProdotti = new CollProdotti();
+    	    var listaSupermercati = new CollSupermercati();
 
-    	      var thisView = this;
+    	    var thisView = this;
     	      
-       	      listaProdotti.setProdottiCategoria(categoria);
-    	      listaProdotti.fetch().done(function(data){
-    	    	  var IdsProdotti = listaProdotti.getIdsProdotti();    	  
-    	    	  listaSupermercati.setSupHome(IdsProdotti);
-    	    	  listaSupermercati.fetch().done(function(data){
-    	              // create the view
-    	              var view = new VHome({
-    	                listaProdotti: listaProdotti,
+       	   	listaProdotti.setProdottiCategoria(categoria);
+       	   	listaProdotti.fetch().done(function(data) {
+       	   		var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+       	   		listaSupermercati.setSupHome(IdsProdotti);
+       	   		listaSupermercati.fetch().done(function(data) {
+       	   			var view = new VHome({
+       	   				listaProdotti: listaProdotti,
     	                listaSupermercati: listaSupermercati
-    	              });
-    	              // show the view
+       	   			});
     	      	    view.render();
     	    	    thisView.$el.append(view.el);
-    	    	  })
-    	      });
-    	   
-       }
-       
-  });
-  return VCategoria;
+       	   		})
+       	   	});
+		}
+	});
+  
+	return VCategoria;
 });
