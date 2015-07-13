@@ -9,12 +9,12 @@ define(function(require){
 		
 		model: MSupermercato,
 	        
-	    setSupMarket: function (listaProdotti) {
-	        this.url = 'http://localhost/MyShopWeb/index.php?func=Market';
+	    setSupMarket: function () {
+	        this.url = 'http://localhost/MyShopWeb/index.php?func=Sup';
 	    },
 	
 		setSupHome: function (IdsSups) {
-			this.url = 'http://localhost/MyShopWeb/index.php?func=HomeSup&dati=' + IdsSups;
+			this.url = 'http://localhost/MyShopWeb/index.php?func=RicercaSup&dati=' + IdsSups;
 		}
 	});
 	

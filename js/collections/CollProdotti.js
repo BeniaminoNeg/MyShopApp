@@ -7,20 +7,24 @@ define(function(require){
 		
 		model: MProdotto,
 		
-        setProdottiHome : function () {
+        setProdottiHome : function() {
         	this.url='http://localhost/MyShopWeb/index.php?func=HomeProd';
         },
         
-        setProdottiSpotlight : function(followed){
+        setProdottiSpotlight : function(followed) {
         	this.url='http://localhost/MyShopWeb/index.php?func=SpotProdApp&dati=' + followed;
         },
         
-        setProdottiCategoria: function(categoria){
-        	this.url='http://localhost/MyShopWeb/index.php?func=CategorieProdotti&dati=' + categoria;
+        setProdottiCategoria: function(categoria) {
+        	this.url='http://localhost/MyShopWeb/index.php?func=RicercaPerCategoria&categoria=' + categoria;
+        },
+        
+        setProdottiMarket : function(Ids) {
+        	this.url='http://localhost/MyShopWeb/index.php?func=Catalogo&dati=' + Ids;
         },
         
         setProdottiRicerca : function (value) {
-            this.url='http://localhost/MyShopWeb/index.php?func=RicercaProdotto&dati=' + value;
+            this.url='http://localhost/MyShopWeb/index.php?func=RicercaPerNome&nome=' + value;
         },
         
         getIdsProdotti: function(){
