@@ -33,9 +33,9 @@ require.config({
 	// We launch the App
 require(['backbone', 'utils'], function(Backbone, Utils) {
 	require(['preloader', 'router'], function(PreLoader, AppRouter) {
-	
+		
 		document.addEventListener('deviceready', run, false);
-	
+			
 	    function run() {
 	    	
 	    	// Here we precompile ALL the templates so that the app will be quickier when switching views
