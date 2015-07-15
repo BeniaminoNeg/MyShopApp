@@ -8,7 +8,8 @@ define(function(require) {
 			Nome: '',
 			Logo: '',
 			Indirizzo: '',
-			Ids: ''
+			Ids: '',
+                        
 		},
                 
 		constructorName: 'MSupermercato',
@@ -18,3 +19,4 @@ define(function(require) {
 
 	return MSupermercato;
 });
+//COLLEGAMENTO ESTERNO A GOOGLE MAPS 'https://www.google.it/maps/search/'stringhe successive divise da +
