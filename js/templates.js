@@ -10,7 +10,7 @@
 //  - value: the path of the html file containing the HTML fragment of the template
 define({
 	structure: '../templates/structure.html',
-    categoria: '../templates/categoria.html',
+    categorie: '../templates/categorie.html',
     market:  '../templates/market.html',
     prodotto:  '../templates/prodotto.html',
     ricerca: '../templates/ricerca.html',

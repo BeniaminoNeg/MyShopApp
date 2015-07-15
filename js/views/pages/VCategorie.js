@@ -2,20 +2,11 @@ define (function(require) {
 	var Backbone = require('backbone');
 	var Utils = require('utils');
 	
-	var VCategoria = require('views/pages/VCategoria');
-  
-	var CollCategorie = require('../../collections/CollCategorie');
-  
-	var MCategoria = require('../../models/MCategoria');
-
 	var VCategorie = Utils.Page.extend({
 		constructorName: 'VCategorie',
-	  
-		listaCategorie: CollCategorie,
-	  
+	  	  
 		initialize: function(options) {
-			this.template=Utils.templates.tabella;
-			this.listaCategorie = options.listaCategorie;
+			this.template=Utils.templates.categorie;
 		},
       
 		tagName: 'ul',
@@ -23,26 +14,21 @@ define (function(require) {
   	  	className: 'table-view',
 
   	  	events: {
+			'tap .categoria': 'viewProdotti',
   	  	},
        
   	  	render: function() {
-  	  		this.$el.find('ul').children().remove();
-  	  		this.addAll();
+			this.$el.html(this.template());
   	  		return this;
   	  	},
-       
-  	  	addAll: function () {
-    	    this.$el.find('ul').children().remove();
-    	  	_.each(this.listaCategorie.models, $.proxy(this, 'addOne'));
-  	  	},
-
-  	  	addOne: function (Categoria) {
-  	  		var view = new VCategoria({
-  	  			Categoria: Categoria
-  	  		});
-  	  		view.render();
-  	  		this.$el.append(view.el);
+  	  	
+  	  	viewProdotti: function(e){
+	    	Backbone.history.navigate('categorie/' + $(e.currentTarget).find('#nome').text(), {
+		        trigger: true,
+		        replace: true
+		        });
   	  	}
+       
 	});
 	
 	return VCategorie;

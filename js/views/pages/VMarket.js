@@ -25,7 +25,7 @@ define (function(require) {
      	id: 'market',
 
      	events: {
-     		'tap #market': 'viewCatalogo',
+     		'tap #market': 'viewProdotti',
      	},
        
      	render: function() {
@@ -34,28 +34,12 @@ define (function(require) {
      		return this;
      	},
        
-     	viewCatalogo: function(){
-     		this.$el.find('#tabellaMarkets').remove();
-    	   
-     		var ids = this.Supermercato.get('Ids');
-    	   
-    		var listaProdotti = new CollProdotti();
-    		var listaSupermercati = new CollSupermercati();
-
-    		var thisView = this;
-    	      
-    		listaProdotti.setProdottiMarket(ids);
-    		listaProdotti.fetch().done(function(data){
-    			listaSupermercati.add(this.Supermercato);
-
-    			var view = new VHome({
-    				listaProdotti: listaProdotti,
-    				listaSupermercati: listaSupermercati
-    			});
-	      	    view.render();
-	    	    thisView.$el.append(view.el);
-    		});
-     	},
+  	  	viewProdotti: function(e){
+  	  			Backbone.history.navigate('markets/' + $(e.currentTarget).find('#ids').text(), {
+		        trigger: true,
+		        replace: true
+		        });
+  	  	},
      	
         getLogo: function() {
         	var ids = this.Supermercato.get('Ids');

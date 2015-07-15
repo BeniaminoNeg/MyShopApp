@@ -22,7 +22,9 @@ define(function(require) {
 			'home':'Home',
 			'spotlight':'Spotlight',
 			'categorie': 'Categorie',
+			'categorie/:categoria': 'ProdottiCategoria',
 			'markets': 'Markets',
+			'markets/:market': 'ProdottiMarket',
 			'ricerca' : 'Ricerca',
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
@@ -100,17 +102,33 @@ define(function(require) {
 		  this.structureView.setActiveTabBarElement('nav3');
 		  this.structureView.setTitleContentElement('Categorie');
 		  this.structureView.setDisplayBackBtnElement();
+
+			  var page = new VCategorie({});
+			  this.changePage(page);
+	  },
+	  
+	  ProdottiCategoria: function(categoria){
+			this.structureView.setDisplayBackBtnElement();
 	
-		  var thisRouter = this;
-	
-		  var listaCategorie= new CollCategorie();
-		  listaCategorie.setCategorie();
-		  listaCategorie.fetch().done(function(data) {
-			  var page = new VCategorie({
-				  listaCategorie: listaCategorie,
-			  });
-			  thisRouter.changePage(page);
-		  });
+			var listaProdotti = new CollProdotti();
+			var listaSupermercati = new CollSupermercati();
+	  
+			var thisRouter = this;
+	  
+			listaProdotti.setProdottiCategoria(categoria);
+			listaProdotti.fetch().done(function(data) {
+				var IdsProdotti = listaProdotti.getIdsProdotti();    	  
+				listaSupermercati.setSupHome(IdsProdotti);
+				listaSupermercati.fetch().done(function(data) {
+					// create the view
+					var page = new VHome({
+						listaProdotti: listaProdotti,
+						listaSupermercati: listaSupermercati
+					});
+					// show the view
+					thisRouter.changePage(page);
+				})
+			});
 	  },
 	
 		Markets: function() {
@@ -129,6 +147,34 @@ define(function(require) {
 				thisRouter.changePage(page);
 			});
 		},
+		
+		  ProdottiMarket: function(market){
+				this.structureView.setDisplayBackBtnElement();
+		
+				var listaProdotti = new CollProdotti();
+				var listaSupermercati = new CollSupermercati();
+		  
+				var thisRouter = this;
+		  
+				listaProdotti.setProdottiMarket(market);
+				listaProdotti.fetch().done(function(data) {
+					console.log(listaProdotti);
+					var IdsProdotti = listaProdotti.getIdsProdotti();  
+					console.log(IdsProdotti);
+					listaSupermercati.setSupHome(IdsProdotti);
+					listaSupermercati.fetch().done(function(data) {
+						// create the view
+						console.log(listaProdotti);
+						console.log(listaSupermercati);
+						var page = new VHome({
+							listaProdotti: listaProdotti,
+							listaSupermercati: listaSupermercati
+						});
+						// show the view
+						thisRouter.changePage(page);
+					})
+				});
+		  },
 	
 		Ricerca: function() {
 			this.structureView.setActiveTabBarElement('nav5');

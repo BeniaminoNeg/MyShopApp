@@ -17,11 +17,11 @@ define(function(require){
         },
         
         setProdottiCategoria: function(categoria) {
-        	this.url='http://localhost/MyShopWeb/index.php?func=RicercaPerCategoria&categoria=' + categoria;
+        	this.url='http://localhost/MyShopWeb/index.php?func=RicercaPerCategoria&Categoria=' + categoria;
         },
         
         setProdottiMarket : function(Ids) {
-        	this.url='http://localhost/MyShopWeb/index.php?func=Catalogo&dati=' + Ids;
+        	this.url='http://localhost/MyShopWeb/index.php?func=Catalogo&Ids=' + Ids;
         },
         
         setProdottiRicerca : function (value) {
