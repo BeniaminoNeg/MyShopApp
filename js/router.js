@@ -108,6 +108,7 @@ define(function(require) {
 	  },
 	  
 	  ProdottiCategoria: function(categoria){
+		  this.structureView.setTitleContentElement(categoria);
 			this.structureView.setDisplayBackBtnElement();
 	
 			var listaProdotti = new CollProdotti();
@@ -149,6 +150,10 @@ define(function(require) {
 		},
 		
 		  ProdottiMarket: function(market){
+			  console.log(market);
+			  var nomeSup = market.substring(7);
+			  var Ids = market.substring(0,6);
+				this.structureView.setTitleContentElement(nomeSup);
 				this.structureView.setDisplayBackBtnElement();
 		
 				var listaProdotti = new CollProdotti();
@@ -156,7 +161,7 @@ define(function(require) {
 		  
 				var thisRouter = this;
 		  
-				listaProdotti.setProdottiMarket(market);
+				listaProdotti.setProdottiMarket(Ids);
 				listaProdotti.fetch().done(function(data) {
 					console.log(listaProdotti);
 					var IdsProdotti = listaProdotti.getIdsProdotti();  

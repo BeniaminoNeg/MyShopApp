@@ -35,7 +35,7 @@ define (function(require) {
      	},
        
   	  	viewProdotti: function(e){
-  	  			Backbone.history.navigate('markets/' + $(e.currentTarget).find('#ids').text(), {
+  	  			Backbone.history.navigate('markets/' + $(e.currentTarget).find('#ids').text() + '_' + $(e.currentTarget).find('#nome').text(), { //S00001_Conad
 		        trigger: true,
 		        replace: true
 		        });
