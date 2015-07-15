@@ -53,7 +53,7 @@ define(function(require) {
 	       },
 	       
 		goToMarket: function(e) {
-		    Backbone.history.navigate('market', {
+		    Backbone.history.navigate('markets', {
 		    	trigger: true
 		    });
 		},

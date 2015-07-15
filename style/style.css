@@ -16,6 +16,10 @@ body {
   margin: 0px;
   padding: 0px;
   width: 100%; }
+  
+  img {
+  width: auto;
+  max-width: 40%}
 
 /* END STANDARD MOBILE */
 /* CUSTOM FONTS */

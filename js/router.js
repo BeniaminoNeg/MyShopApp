@@ -4,13 +4,12 @@ define(function(require) {
 	
 	var CollProdotti = require('collections/CollProdotti');
 	var CollSupermercati = require('collections/CollSupermercati');
-	var CollCategorie = require('collections/CollCategorie');
 	  
 	var StructureView = require('views/StructureView');
 	var VHome = require('views/pages/VHome');
 	var VSpotlight = require('views/pages/VSpotlight');
 	var VCategorie = require('views/pages/VCategorie');
-	var VMarkets = require('views/pages/VMarket');
+	var VMarkets = require('views/pages/VMarkets');
 	var VRicerca = require('views/pages/VRicerca');
 	
 	var AppRouter = Backbone.Router.extend({
@@ -24,7 +23,7 @@ define(function(require) {
 			'spotlight':'Spotlight',
 			'categorie': 'Categorie',
 			'markets': 'Markets',
-			'ricerca' : 'Ricerca'
+			'ricerca' : 'Ricerca',
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
 		},
@@ -112,17 +111,17 @@ define(function(require) {
 			  });
 			  thisRouter.changePage(page);
 		  });
-	},
+	  },
 	
 		Markets: function() {
 			this.structureView.setActiveTabBarElement('nav4');
-			this.structureView.setTitleContentElement('Market');
+			this.structureView.setTitleContentElement('Markets');
 			this.structureView.setDisplayBackBtnElement();
 		 
 			var thisRouter = this;
 		 
 			var listaSupermercati= new CollSupermercati();
-			listaSupermercati.setSupermercati();
+			listaSupermercati.setSupMarket();
 			listaSupermercati.fetch().done(function(data) {
 				var page = new VMarkets({
 					listaSupermercati: listaSupermercati,

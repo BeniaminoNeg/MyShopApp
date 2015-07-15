@@ -12,6 +12,7 @@ define(function(require){
         },
         
         setProdottiSpotlight : function(followed) {
+        	followed = followed.slice(0, -1);
         	this.url='http://localhost/MyShopWeb/index.php?func=SpotProdApp&dati=' + followed;
         },
         
@@ -29,16 +30,17 @@ define(function(require){
         
         getIdsProdotti: function(){
         	var i = 0;
+        	var j = 0;
         	var arrayIds = [];
-        	var stringIds = '';
         	while(this.at(i)){
         		if (!this.isInArray(this.at(i).get('SupermercatoId'), arrayIds)) {
-            		stringIds += this.at(i).get('SupermercatoId') + ',';
-               		arrayIds[i] = this.at(i).get('SupermercatoId'); 
+               		arrayIds[j] = this.at(i).get('SupermercatoId'); 
+               		j++;
            		}
-           		i++;
+        		i++;
         	}
-        	return stringIds;
+       		stringIds = arrayIds.join(',');
+       		return stringIds;
         },
          
         isInArray: function(valore, array){

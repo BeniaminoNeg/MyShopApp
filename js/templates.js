@@ -11,7 +11,7 @@
 define({
 	structure: '../templates/structure.html',
     categoria: '../templates/categoria.html',
-    market:  '../templates/categoria.html',
+    market:  '../templates/market.html',
     prodotto:  '../templates/prodotto.html',
     ricerca: '../templates/ricerca.html',
 });

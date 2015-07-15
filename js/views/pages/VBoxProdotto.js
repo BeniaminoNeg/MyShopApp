@@ -4,12 +4,16 @@ define (function(require) {
   
 	var MProdotto = require('../../models/MProdotto');
 	var MSupermercato = require('../../models/MSupermercato');
+	var MImmagine = require('../../models/MImmagine');
+
   
 	var VBoxProdotto = Utils.Page.extend({
 		constructorName: 'VBoxProdotto',
       
 		Prodotto: MProdotto,
 		Supermercato: MSupermercato,
+		ImmagineProd: MImmagine,
+		ImmagineSup: MImmagine,
       
 		initialize: function(options) {
 			this.template =Utils.templates.prodotto;
@@ -93,7 +97,21 @@ define (function(require) {
         getImmagini: function() {
         	var id = this.Prodotto.get('Id');
         	var ids = this.Supermercato.get('Ids');
-        	var url = 'http://localhost/MyShopWeb/index.php?func=GetImmagine&Id=' + id;
+        	this.ImmagineProd = new MImmagine();
+        	this.ImmagineSup = new MImmagine();
+        	this.ImmagineProd.setImmagine(id);
+        	this.ImmagineSup.setImmagine(ids);
+        	
+        	var thisView = this;
+        	
+			this.ImmagineProd.fetch().done(function(data) {
+				$(thisView.el).find('#imgProd').attr('src', 'data:image/' + thisView.ImmagineProd.get('Type') +';base64,' + thisView.ImmagineProd.get('Immagine'));
+				thisView.ImmagineSup.fetch().done(function(data) {
+					$(thisView.el).find('#imgSup').attr('src', 'data:image/' + thisView.ImmagineSup.get('Type') +';base64,' + thisView.ImmagineSup.get('Immagine'));
+				})
+			});
+        	
+			/*
         	var thisView = this;
         	$.getJSON(url, function(data) {
         		$(thisView.el).find('#imgProd').attr('src', data);
@@ -102,6 +120,7 @@ define (function(require) {
             		$(thisView.el).find('#imgSup').attr('src', data);
             	})
         	})	
+        	*/
         }
 	});
 	

@@ -4,7 +4,7 @@ define (function(require) {
 	
 	var VMarket = require('views/pages/VMarket');
   
-	var CollSupermercati = require('../../collections/CollSupermercato');
+	var CollSupermercati = require('../../collections/CollSupermercati');
   
 	var MSupermercato = require('../../models/MSupermercato');
 
@@ -15,7 +15,7 @@ define (function(require) {
 	  
 		initialize: function(options) {
 			this.template=Utils.templates.tabella;
-			this.listaSupermecati = options.listaSupermecati
+			this.listaSupermercati = options.listaSupermercati;
 		},
       
 		tagName: 'ul',
