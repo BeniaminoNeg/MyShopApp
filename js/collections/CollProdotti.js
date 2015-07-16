@@ -8,24 +8,29 @@ define(function(require){
 		model: MProdotto,
 		
         setProdottiHome : function() {
-        	this.url='http://localhost/MyShopWeb/index.php?func=HomeProd';
+        	//in locale http://localhost/MyShopWeb/index.php?func=...
+        	this.url='http://myshopp.altervista.org/index.php?func=HomeProd';
         },
         
         setProdottiSpotlight : function(followed) {
         	followed = followed.slice(0, -1);
-        	this.url='http://localhost/MyShopWeb/index.php?func=SpotProdApp&dati=' + followed;
+        	//in locale http://localhost/MyShopWeb/index.php?func=...
+        	this.url='http://myshopp.altervista.org/index.php?func=SpotProdApp&dati=' + followed;
         },
         
         setProdottiCategoria: function(categoria) {
-        	this.url='http://localhost/MyShopWeb/index.php?func=RicercaPerCategoria&Categoria=' + categoria;
+        	//in locale http://localhost/MyShopWeb/index.php?func=...
+        	this.url='http://myshopp.altervista.org/index.php?func=RicercaPerCategoria&Categoria=' + categoria;
         },
         
         setProdottiMarket : function(Ids) {
-        	this.url='http://localhost/MyShopWeb/index.php?func=Catalogo&Ids=' + Ids;
+        	//in locale http://localhost/MyShopWeb/index.php?func=...
+        	this.url='http://myshopp.altervista.org/index.php?func=Catalogo&Ids=' + Ids;
         },
         
         setProdottiRicerca : function (value) {
-            this.url='http://localhost/MyShopWeb/index.php?func=RicercaPerNome&nome=' + value;
+        	//in locale http://localhost/MyShopWeb/index.php?func=...
+        	this.url='http://myshopp.altervista.org/index.php?func=RicercaPerNome&nome=' + value;
         },
         
         getIdsProdotti: function(){
