@@ -8,29 +8,29 @@ define(function(require){
 		model: MProdotto,
 		
         setProdottiHome : function() {
-        	//in locale http://localhost/MyShopWeb/index.php?func=...
-        	this.url='http://myshopp.altervista.org/index.php?func=HomeProd';
+        	//in locale http://localhost/MyShopWeb/call.php?func=...
+        	this.url='http://myshopp.altervista.org/call.php?func=HomeProd';
         },
         
         setProdottiSpotlight : function(followed) {
         	followed = followed.slice(0, -1);
-        	//in locale http://localhost/MyShopWeb/index.php?func=...
-        	this.url='http://myshopp.altervista.org/index.php?func=SpotProdApp&dati=' + followed;
+        	//in locale http://localhost/MyShopWeb/call.php?func=...
+        	this.url='http://myshopp.altervista.org/call.php?func=SpotProdApp&dati=' + followed;
         },
         
         setProdottiCategoria: function(categoria) {
-        	//in locale http://localhost/MyShopWeb/index.php?func=...
-        	this.url='http://myshopp.altervista.org/index.php?func=RicercaPerCategoria&Categoria=' + categoria;
+        	//in locale http://localhost/MyShopWeb/call.php?func=...
+        	this.url='http://myshopp.altervista.org/call.php?func=RicercaPerCategoria&Categoria=' + categoria;
         },
         
         setProdottiMarket : function(Ids) {
-        	//in locale http://localhost/MyShopWeb/index.php?func=...
-        	this.url='http://myshopp.altervista.org/index.php?func=Catalogo&Ids=' + Ids;
+        	//in locale http://localhost/MyShopWeb/call.php?func=...
+        	this.url='http://myshopp.altervista.org/call.php?func=Catalogo&Ids=' + Ids;
         },
         
         setProdottiRicerca : function (value) {
-        	//in locale http://localhost/MyShopWeb/index.php?func=...
-        	this.url='http://myshopp.altervista.org/index.php?func=RicercaPerNome&nome=' + value;
+        	//in locale http://localhost/MyShopWeb/call.php?func=...
+        	this.url='http://myshopp.altervista.org/call.php?func=RicercaPerNome&nome=' + value;
         },
         
         getIdsProdotti: function(){

@@ -10,13 +10,13 @@ define(function(require){
 		model: MSupermercato,
 	        
 	    setSupMarket: function () {
-	    	//in locale http://localhost/MyShopWeb/index.php?func=...
-	        this.url = 'http://myshopp.altervista.org/index.php?func=Sup';
+	    	//in locale http://localhost/MyShopWeb/call.php?func=...
+	        this.url = 'http://myshopp.altervista.org/call.php?func=Sup';
 	    },
 	
 		setSupHome: function (IdsSups) {
-			//in locale http://localhost/MyShopWeb/index.php?func=...
-			this.url = 'http://myshopp.altervista.org/index.php?func=RicercaSup&dati=' + IdsSups;
+			//in locale http://localhost/MyShopWeb/call.php?func=...
+			this.url = 'http://myshopp.altervista.org/call.php?func=RicercaSup&dati=' + IdsSups;
 		}
 	});
 	

@@ -14,8 +14,8 @@ define(function(require) {
 		initialize: function (){},
 		
         setImmagine : function(id) {
-        	//in locale http://localhost/MyShopWeb/index.php?func=...
-        	this.url='http://myshopp.altervista.org//index.php?func=GetImmagine&Id=' + id;
+        	//in locale http://localhost/MyShopWeb/call.php?func=...
+        	this.url='http://myshopp.altervista.org//call.php?func=GetImmagine&Id=' + id;
         },
 	});
 	
