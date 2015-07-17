@@ -1,8 +1,6 @@
 define(function(require){
 	var Backbone = require('backbone');
-	var MSupermercato = require('../models/MSupermercato');
-	var CollProdotti = require('../collections/CollProdotti');
-	
+	var MSupermercato = require('../models/MSupermercato');	
 	
 	var CollSupermercati = Backbone.Collection.extend({
 		constructorName: 'CollSupermercati',
