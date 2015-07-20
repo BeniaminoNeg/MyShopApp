@@ -21,12 +21,11 @@ define (function(require) {
 			this.Supermercato = options.Supermercato;
 		},
       
-		tagName: 'li',
+		tagName: 'div',
 		id: 'prodotto',
-		className: 'table-view-cell media',
 
 		events: {
-			'tap #dettagli': 'Dettagli',
+			//'tap #dettagli': 'Dettagli',
 			'tap #tofollow': 'Follow'
 		},
        
@@ -43,7 +42,7 @@ define (function(require) {
 			this.getImmagini();
 			return this;
 		},       
-       
+       /*
 		Dettagli: function (e) {
 			if($(this.el).find('#dettagli').attr('class') == 'no') {
 				$(this.el).find('#dettagli').children('.icon').removeClass('icon-down-nav');
@@ -59,6 +58,7 @@ define (function(require) {
 				$(this.el).find('#dettagli').addClass('no');
 			}
 		},
+		*/
        
 		Follow: function (e) {
 			if($(this.el).find('#tofollow').attr('class') == 'followed') {

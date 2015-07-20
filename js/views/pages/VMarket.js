@@ -23,7 +23,7 @@ define (function(require) {
 
      	events: {
      		'tap #supermercato': 'viewProdotti',
-			'tap #mappa': 'viewMappa', 
+			'tap .map': 'viewMappa', 
      	},
        
      	render: function() {

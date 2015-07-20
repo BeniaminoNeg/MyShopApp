@@ -121,15 +121,16 @@ body {
 	border-color: transparent;
 	display: block;}
     
+/*
 #prodotto{
 	width: 280px;
-	/*height: 180px;*/
+	//height: 180px;
 	margin-left: 1%;
     float: left;
     display: inline;}
+*/
 
 .nome{
-    display: block;
     text-transform: uppercase; }
 
 .icon-dettagli, .icon-follow{
@@ -138,7 +139,8 @@ body {
 	background-color: #FFFFFF}
 
 .descrizione{
-    font-weight: 200;
+	color: #FF4500;    
+	font-weight: 200;
     font-size: 80%;
     display: block;
     text-align: center; }
@@ -147,7 +149,8 @@ body {
 	text-size:110%;
 	font-weight: bold;
     display: block;
-    text-align: right; }
+    text-align: right; 
+    margin-right: 5%; }
 
 #tofollow{
 	text-align:right; }
@@ -186,8 +189,140 @@ body {
 	top:200px;
 }
 
+/* PRODOTTO */
+
+#prodotto {
+	text-color: #FFFFFF;
+	border: 4px solid #F09010;
+	width: 45%;
+	height: 47%;
+	float: left;
+	position: relative;
+	border-radius: 10px;
+	margin-left: 7px;
+	margin-top: 10px;}
+	
+.testo {
+	color: #FF4500;
+	background-color: #FFFFFF;
+	width: 300px;
+	height: 300px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: absolute;
+	top: -7px;
+	right: 450px;
+	opacity: 4;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	border-radius: 15px;}
+	
+#prodotto:hover .testo {
+  	color:#FFFFFF;
+ 	opacity: 0.9; 
+  	left: 0;
+  	top: 0;}
+  	
+#prodotto > #dettagli {
+  	color:#FFFFFF;
+  	width:7.7em;
+  	height:6em;
+  	clear:both;}
+  	
+#prodotto > img {
+  	width:6em;
+ 	height: auto;
+ 	border-radius: 15px;}
+
+.supermercato > #imgSup{
+  	width:6em;
+  	height: 2em;}
+
+@media screen and (max-width:1280px)and (min-width: 500px){
+
+#prodotto{
+	border: 4px solid #F09010;
+	padding-left: 100px;
+	width:45%; 
+	height: 45%;
+	position: relative;
+	float: left;
+	border-radius: 15px;
+	margin-left: 30px;
+	margin-top:20px;}
+
+  .testo {
+	color:#FF4500;
+	background-color: #FFFFFF;
+	width: 3000px;
+	height: 1500px;
+	padding-left: 110px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: absolute;
+	top: -30px;
+	right: 3000px;
+	opacity: 4;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	border-radius: 15px;}
+
+#prodotto:hover .testo {
+	opacity: 0.9; 
+	left: 0;
+	top: 0;}
+	
+#prodotto > #dettagli {
+	color:#FFFFFF;
+	width:19em;
+	height:16em;
+	clear:both;}
+
+#prodotto > img {
+	width:11em;
+	height:12em;}
+
+  .supermercato > #imgSup{
+	width:13em;
+	height: 11em;}
+
+.descrizione{
+    font-color:#FFFFFF;
+    font-weight: 200;
+    font-size: 90%;
+    text-align: center;
+    clear: none; 
+    width: 100%;}
+}
+
+/* CATEGORIE */
+
+.categoria{
+	width: 100%;
+	height: 50%;}
+	
+.float-left > img{
+	width: 9em;
+	height: 6em;}
+	
+/* MARKETS */
+
+#supermercato{
+	width: 100%;
+	height: 50%;}
+	
+#supermercato > .float-left > img{
+	width: 9em;
+	height: 2em;}
 
 /* END STRUCTURE */
-#map {
-	height: 100%;
-	width: 100%; }
+#mappa {
+	height: 10%;
+	width: 10%; }
