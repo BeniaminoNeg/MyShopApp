@@ -167,15 +167,6 @@ body {
     font-size: 1.85em;
     display: inline; }  
     
-#offline{
-	width: 100%;
-	height: 100%;
-	text-allign: center;}
-	
-#offline > p{
-	font-size: 200%;
-	color: #FF4500;}
-    
 #value{
 	width: 70%;}
 	
@@ -321,8 +312,11 @@ display: inline-block;}
 	height: 50%;}
 	
 #supermercato > .float-left > img{
-	width: 9em;
-	height: 2em;}
+	width: 5.5em;
+	height: 2.5em;}
+	
+#noitem, #offline {
+	top: 200px;}
 
 /* END STRUCTURE */
 #mappa {

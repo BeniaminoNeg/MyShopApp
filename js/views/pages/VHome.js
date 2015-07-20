@@ -23,9 +23,7 @@ define (function(require) {
   	  		this.result = options.result;
   	  	},
   	  	
-  	  	tagName: 'ul',
   	  	id: 'tabella',
-  	  	className: 'table-view',
   	  	
   	  	events: {
   	  	},
@@ -60,7 +58,7 @@ define (function(require) {
   	  	
         noProdotti: function(){
      	   //this.$el.append('<div class=\'emptyResult\'><a><img class=\'\' src=\'../img/empty.png\'></a></div>')
-     	   this.$el.append('<table id=\'offline\'\'><tr><td valign=\'middle\' align=\'center\'><img src=\'./img/empty.png\'><p>Non ci sono prodotti in questa sezione</p></td></tr></table>');
+     	   this.$el.append('<table id=\'noitem\'><tr><td valign=\'middle\' align=\'center\'><img src=\'./img/empty.png\'><p>Non ci sono prodotti in questa sezione</p></td></tr></table>');
         }
 	});
 	

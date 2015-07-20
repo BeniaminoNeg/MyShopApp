@@ -23,7 +23,6 @@ define (function(require) {
 		},
 
 		ricarica: function() {
-			
 	    	Backbone.history.navigate('home' , {
 		        trigger: true,
 		        });
