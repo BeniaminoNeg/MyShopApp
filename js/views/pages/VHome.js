@@ -15,22 +15,28 @@ define (function(require) {
 	  
 		listaProdotti: CollProdotti,
   	  	listaSupemercati: CollSupermercati,
+  	  	result: '',
 	  
   	  	initialize: function(options) {
   	  		this.listaProdotti= options.listaProdotti;
   	  		this.listaSupermercati= options.listaSupermercati;
+  	  		this.result = options.result;
   	  	},
-      
+  	  	
   	  	tagName: 'ul',
   	  	id: 'tabella',
   	  	className: 'table-view',
-
+  	  	
   	  	events: {
   	  	},
   	  	
   	  	render: function() {
   	  		this.$el.find('#tabella').remove();
-  	  		this.addAll();
+  	  		if(this.result == 'empty') {
+  	  			this.noProdotti();
+  	  		} else {
+  	  			this.addAll();
+  	  		}
   	  		return this;
   	  	},
        
@@ -46,11 +52,16 @@ define (function(require) {
 			var Supermercato = this.listaSupermercati.where({Ids: Prodotto.get('SupermercatoId')});
 	    	var view = new VBoxProdotto({
 	    		Prodotto: Prodotto,
-	    		Supermercato: Supermercato["0"],
+	    		Supermercato: Supermercato['0'],
 	    	});
 	    	view.render();
 	    	this.$el.append(view.el);
-  	  	}
+  	  	},
+  	  	
+        noProdotti: function(){
+     	   //this.$el.append('<div class=\'emptyResult\'><a><img class=\'\' src=\'../img/empty.png\'></a></div>')
+     	   this.$el.append('<li class=\'\'>' + 'In questo momento la tua  spotlight è vuota, cerca un prodotto e seguilo per sapere quando sarà in offerta' + '</li>');
+        }
 	});
 	
 	return VHome;

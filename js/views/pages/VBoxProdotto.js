@@ -22,6 +22,7 @@ define (function(require) {
 		},
       
 		tagName: 'li',
+		id: 'prodotto',
 		className: 'table-view-cell media',
 
 		events: {
@@ -32,6 +33,11 @@ define (function(require) {
 		render: function() {
 			var JSON = this.Prodotto.toJSON();
 			JSON['Supermercato'] = this.Supermercato.toJSON();
+/*
+ * prova inserire immagini nei model
+			JSON['Immagine'] = this.Prodotto.get('Immagine').toJSON();
+			JSON['Supermercato']['Logo'] = this.Supermercato.get('Logo').toJSON();
+*/
 			this.$el.html(this.template(JSON));
 			this.checkPreferitoLocally();
 			this.getImmagini();
@@ -70,6 +76,9 @@ define (function(require) {
        
 		addPreferitoLocally: function(toFollow) {
 			var currentFollowed = window.localStorage.getItem('followed');
+			if (currentFollowed == null){
+				currentFollowed = '';
+			}
 			currentFollowed += toFollow;
 			currentFollowed += ',';
 			window.localStorage.setItem('followed', currentFollowed);

@@ -1,22 +1,34 @@
 define(function(require) {
 	var Backbone = require('backbone');
 	
-	var Indirizzo = require('models/MIndirizzo');
+	var MImmagine = require('models/MImmagine');
 
 	var MSupermercato = Backbone.Model.extend({
 		defaults: {
 			Nome: '',
-			Logo: '',
+			//Logo: '', //prova immagini nei model
 			Indirizzo: '',
-			Ids: '',
-                        
+			Ids: '',                        
 		},
                 
 		constructorName: 'MSupermercato',
 
 		initialize: function (){},
+/*
+ * prova inserire immagini nei model
+	    getImmagine: function(){
+        	Logo = new MImmagine;
+        	this.set('Logo', Logo);
+        	this.get('Logo').setImmagine(this.get('Ids'));
+        	
+        	var thisSupermercato = this;
+        	
+			this.get('Logo').fetch().done(function(data){
+				thisSupermercato.get('Logo').setImmagineToHtml();
+			})
+	    }
+*/
 	});
 
 	return MSupermercato;
 });
-//COLLEGAMENTO ESTERNO A GOOGLE MAPS 'https://www.google.it/maps/search/'stringhe successive divise da +

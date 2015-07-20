@@ -22,7 +22,8 @@ define (function(require) {
      	id: 'market',
 
      	events: {
-     		'tap #market': 'viewProdotti',
+     		'tap supermercato': 'viewProdotti',
+			'tap #mappa': 'viewMappa', 
      	},
        
      	render: function() {
@@ -34,7 +35,6 @@ define (function(require) {
   	  	viewProdotti: function(e){
   	  			Backbone.history.navigate('markets/' + $(e.currentTarget).find('#ids').text() + '_' + $(e.currentTarget).find('#nome').text(), { //S00001_Conad
 		        trigger: true,
-		        replace: true
 		        });
   	  	},
      	
@@ -48,7 +48,18 @@ define (function(require) {
 			thisView.ImmagineSup.fetch().done(function(data) {
 				$(thisView.el).find('#logo').attr('src', 'data:image/' + thisView.ImmagineSup.get('Type') +';base64,' + thisView.ImmagineSup.get('Immagine'));
 			});
-        }
+        },
+        
+  	  	//COLLEGAMENTO ESTERNO A GOOGLE MAPS 'https://www.google.it/maps/search/'stringhe successive divise da +
+  	  	viewMappa: function(e){
+  	  		console.log('https://www.google.it/maps/search/' + $(this.el).find('#nome').text() + ' ' +
+						$(this.el).find('#città').text() + ' ' +
+							$(this.el).find('#via').text());
+  	  		var ref = cordova.InAppBrowser.open('https://www.google.it/maps/search/' + $(this.el).find('#nome').text() + ' ' +
+  	  																					$(this.el).find('#città').text() + ' ' +
+  	  																					$(this.el).find('#via').text(),
+  	  																					'_self', 'location=yes');
+  	  	}
 	});
 	
 	return VMarket;

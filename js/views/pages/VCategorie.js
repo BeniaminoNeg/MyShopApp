@@ -25,10 +25,8 @@ define (function(require) {
   	  	viewProdotti: function(e){
 	    	Backbone.history.navigate('categorie/' + $(e.currentTarget).find('#nome').text() , {
 		        trigger: true,
-		        replace: true
 		        });
   	  	}
-       
 	});
 	
 	return VCategorie;

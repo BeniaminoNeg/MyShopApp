@@ -1,18 +1,22 @@
-<img class='media-object pull-left' id='imgProd' src=''>
+<a class='float-left'>
+	<img class='media-object pull-left' id='imgProd' src='{{ Immagine.ImmagineHtml }}'>
+</a>
 <div class='media-body'>
 	<p class='nome'>{{ Nome }}</p>
   	<p class='displaynone' id='id'>{{ Id }}</p>
+  	<div class='' id='tofollow'>
+   		<span class='icon icon-star icon-follow'></span>
+  	</div>
   	<div class='no' id='dettagli'>
     	<span class='icon icon-down-nav icon-dettagli'>Dettagli</span>
       	<div class='displaynone'>
      		<p class='descrizione'>{{ Descrizione }}</p>
           	<p class='supermercato'>
-         		<img class='media-object pull-left' id='imgSup' src=''>
+          		<a class='loat-left'>
+	         		<img class='media-object pull-left' id='imgSup' src='{{ Supermercato.Logo.ImmagineHtml }}'>
+         		</a>
              	<div class='displaynone'>{{ Supermercato.Nome }}</div>
           	<p class='prezzo'>€ {{ Prezzo }}</p>
       	</div>
-  	</div>
-  	<div class='' id='tofollow'>
-   		<span class='icon icon-star icon-follow'></span>
   	</div>
 </div>

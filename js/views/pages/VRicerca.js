@@ -15,7 +15,7 @@ define (function(require) {
 		},
       
 		tagName: 'div',
-		className: 'bar bar-standard bar-header-secondary',
+		className: 'bar bar-standard bar-header-secondary scrollable',
 
 		events: {
 			'tap #ricerca': 'ricercaProdotti',
@@ -37,6 +37,7 @@ define (function(require) {
     	      	var thisView = this;
     	      
     	      	listaProdotti.setProdottiRicerca(ricerca);
+    	      	//far apparire un loader oppure mettere il loader e nascondere il tasto cerca oppure bloccare qui il triggering dell'evento
     	      	listaProdotti.fetch().done(function(data) {
     	      		var IdsProdotti = listaProdotti.getIdsProdotti();    	  
     	      		listaSupermercati.setSupHome(IdsProdotti);
@@ -46,7 +47,8 @@ define (function(require) {
     	      				listaSupermercati: listaSupermercati
     	      			});
     	      			view.render();
-    	      			thisView.$el.append(view.el);
+    	      			console.log(thisView.$el);
+    	      			view.$el.insertAfter(thisView.$el);
     	      		})
     	      	});
 		}

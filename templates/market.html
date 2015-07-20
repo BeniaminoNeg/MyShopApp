@@ -1,14 +1,17 @@
-<li class='table-view-cell media' id='market'>
+<div id='supermercato'>
 	<a class='navigate-right float-left'>
-	  <img class='media-object pull-left' id='logo' src=''>
+		<img class='media-object pull-left' id='logo' src=''>
 	</a>
 	<div class='media-body'>
 		<div class='displaynone' id='nome'>{{ Nome }}</div>
 		<div class='displaynone' id ='ids'>{{ Ids }}</div>
 		<div class='indirizzo'>
-		    <p>{{ Indirizzo.Città }}</p>
-	      	<p>{{ Indirizzo.Via }}</p> 
+		    <p id='città'>{{ Indirizzo.Città }}</p>
+	      	<p id='via'>{{ Indirizzo.Via }}</p> 
 	      	<p class='displayinline'>{{ Indirizzo.NumeroCivico }}</p>
 	     </div>
 	</div>
-</li>
+</div>
+<div>
+	  <span class='icon icon-info displayinline' id='mappa'></span>
+</div>

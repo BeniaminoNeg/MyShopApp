@@ -6,6 +6,7 @@ define(function(require) {
 			Size: '',
 			Type: '',
 			Immagine: '',
+			//ImmagineHtml: '', //prova inserire immagini nei model
 			Id: '',
 		},
 		
@@ -13,10 +14,16 @@ define(function(require) {
 
 		initialize: function (){},
 		
-        setImmagine : function(id) {
-        	//in locale http://localhost/MyShopWeb/call.php?func=...
-        	this.url='http://myshopp.altervista.org//call.php?func=GetImmagine&Id=' + id;
+        setImmagine: function(id) {
+        	this.url='http://localhost/MyShopWeb/call.php?func=GetImmagine&Id=' + id;
+        	//this.url='http://myshopp.altervista.org//call.php?func=GetImmagine&Id=' + id;
         },
+/*
+ * prova inserire immagini nei model
+        setImmagineToHtml: function(){
+			this.set('ImmagineHtml',  'data:image/' + this.get('Type') + ';base64,' + this.get('Immagine'));
+        } 
+*/
 	});
 	
 	return MImmagine;
