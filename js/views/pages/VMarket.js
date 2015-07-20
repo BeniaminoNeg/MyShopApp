@@ -22,7 +22,7 @@ define (function(require) {
      	id: 'market',
 
      	events: {
-     		'tap supermercato': 'viewProdotti',
+     		'tap #supermercato': 'viewProdotti',
 			'tap #mappa': 'viewMappa', 
      	},
        

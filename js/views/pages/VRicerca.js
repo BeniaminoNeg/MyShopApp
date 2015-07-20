@@ -9,7 +9,7 @@ define (function(require) {
 
 	var VRicerca = Utils.Page.extend({
 		constructorName: 'VRicerca',
-            
+		            
 		initialize: function(options) {
 			this.template=Utils.templates.ricerca;
 		},
@@ -25,8 +25,13 @@ define (function(require) {
 			this.$el.html(this.template());
 			return this;
 		},
-       
+
 		ricercaProdotti: function() {
+	    	Backbone.history.navigate('ricerca/' + this.$el.find('#value').attr('value') , {
+		        trigger: true,
+		        replace: true,
+		        });		
+			/*
 			this.$el.find('#tabella').remove();
     	   
 			var ricerca = this.$el.find('#value').attr('value');
@@ -47,10 +52,10 @@ define (function(require) {
     	      				listaSupermercati: listaSupermercati
     	      			});
     	      			view.render();
-    	      			console.log(thisView.$el);
     	      			view.$el.insertAfter(thisView.$el);
     	      		})
     	      	});
+    	      	*/
 		}
        
 	});

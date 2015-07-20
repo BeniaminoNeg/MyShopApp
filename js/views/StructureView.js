@@ -91,6 +91,12 @@ define(function(require) {
 	    	if(document.getElementById('back').classList){
 	    		document.getElementById('back').classList.add('displaynone');
 	    	}
+		},
+		
+		removeElementById: function(id) {
+			if(document.getElementById(id)){
+				document.getElementById(id).remove();
+			}
 		}
 	});
 	

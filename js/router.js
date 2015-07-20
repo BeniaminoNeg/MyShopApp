@@ -11,6 +11,7 @@ define(function(require) {
 	var VCategorie = require('views/pages/VCategorie');
 	var VMarkets = require('views/pages/VMarkets');
 	var VRicerca = require('views/pages/VRicerca');
+	var VOffline = require('views/pages/VOffline');
 	
 	var AppRouter = Backbone.Router.extend({
 		constructorName: 'AppRouter',
@@ -27,6 +28,7 @@ define(function(require) {
 			'markets/:market': 'ProdottiMarket',
 			'ricerca': 'Ricerca',
 			'ricerca/:value': 'ProdottiRicerca', 
+			'offline': 'Offline',
 			//note/:id/view: "show" oppure note/:id/edit : "edit" Nello show è definito un ID random 
 			//quindi la rotta utilizza il criterio del longest match!!!!!!!!!
 		},
@@ -34,6 +36,7 @@ define(function(require) {
 		firstView: 'home',
 	
 		initialize: function(options) {
+			document.addEventListener('offline', this.onOffline, false);
 			this.currentView = undefined;
 		},
 		
@@ -49,7 +52,7 @@ define(function(require) {
 			var listaSupermercati = new CollSupermercati();
 	  
 			var thisRouter = this;
-	  
+			
 			listaProdotti.setProdottiHome();
 			listaProdotti.fetch().done(function(data) {
 				var IdsProdotti = listaProdotti.getIdsProdotti();    	  
@@ -234,22 +237,32 @@ define(function(require) {
 	  
 			listaProdotti.setProdottiRicerca(value);
 			listaProdotti.fetch().done(function(data) {
-				var IdsProdotti = listaProdotti.getIdsProdotti();
-				$.when(listaProdotti.getImmagini()).then(function(){
+				if(listaProdotti.getIdsProdotti() != ''){
+					var IdsProdotti = listaProdotti.getIdsProdotti();    	  
 					listaSupermercati.setSupHome(IdsProdotti);
 					listaSupermercati.fetch().done(function(data) {
-						$.when(listaSupermercati.getImmagini()).then(function(){
-							// create the view
-							var page = new VHome({
-								listaProdotti: listaProdotti,
-								listaSupermercati: listaSupermercati
-							});
-							// show the view
-							thisRouter.changePage(page);
-						})
+						// create the view
+						var page = new VHome({
+							listaProdotti: listaProdotti,
+							listaSupermercati: listaSupermercati
+						});
+						thisRouter.addToPage(page, 'tabella')
 					})
-				})
+				} else {
+					var page = new VHome({
+						result: 'empty',
+					});
+					thisRouter.addToPage(page, 'tabella')
+				}
+				// show the view removing an elementById
 			});
+		},
+		
+		Offline: function() {
+		    this.structureView.setDisplayBackBtnElement();
+		    
+		    var page = new VOffline();
+		    this.changePage(page);
 		},
 		
 		// load the structure view
@@ -262,9 +275,15 @@ define(function(require) {
 			}
 			// go to first view
 			this.navigate(this.firstView, {trigger: true});
+		},
+		
+		onOffline: function(){
+			console.log('offline');
+	    	Backbone.history.navigate('offline', {
+	    		trigger: true
+	    	});
 		}
 	});
-	
 	return AppRouter;
 });
 
