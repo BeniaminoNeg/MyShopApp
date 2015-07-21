@@ -15,8 +15,8 @@ define(function(require) {
 		initialize: function (){},
 		
         setImmagine: function(id) {
-        	//this.url='http://localhost/MyShopWeb/call.php?func=GetImmagine&Id=' + id;
-        	this.url='http://myshopp.altervista.org//call.php?func=GetImmagine&Id=' + id;
+        	this.url='http://localhost/MyShopWeb/call.php?func=GetImmagine&Id=' + id;
+        	//this.url='http://myshopp.altervista.org//call.php?func=GetImmagine&Id=' + id;
         },
 /*
  * prova inserire immagini nei model

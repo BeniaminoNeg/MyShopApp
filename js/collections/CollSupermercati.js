@@ -8,13 +8,13 @@ define(function(require){
 		model: MSupermercato,
 	        
 	    setSupMarket: function () {
-	        //this.url = 'http://localhost/MyShopWeb/call.php?func=Sup';
-	        this.url = 'http://myshopp.altervista.org/call.php?func=Sup';
+	        this.url = 'http://localhost/MyShopWeb/call.php?func=Sup';
+	        //this.url = 'http://myshopp.altervista.org/call.php?func=Sup';
 	    },
 	
 		setSupHome: function (IdsSups) {
-			//this.url = 'http://localhost/MyShopWeb/call.php?func=RicercaSup&dati=' + IdsSups;
-			this.url = 'http://myshopp.altervista.org/call.php?func=RicercaSup&dati=' + IdsSups;
+			this.url = 'http://localhost/MyShopWeb/call.php?func=RicercaSup&dati=' + IdsSups;
+			//this.url = 'http://myshopp.altervista.org/call.php?func=RicercaSup&dati=' + IdsSups;
 		},
 /*
  * prova inseire immagini nei model
