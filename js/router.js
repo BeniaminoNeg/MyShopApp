@@ -16,6 +16,8 @@ define(function(require) {
 	var AppRouter = Backbone.Router.extend({
 		constructorName: 'AppRouter',
 	
+		loader: '<img id=\'loader\' class=\'centered\' src=\'./img/loader.gif\'></img>',
+		
 		routes: {
 			// the default is the structure view  
 			//SINISTRA path della view DESTRA FUNZIONE definita dentro al ROUTER
@@ -41,6 +43,8 @@ define(function(require) {
 		},
 		
 		Home: function() {
+			//show loader
+			this.structureView.showLoader();
 			// highlight the nav1 tab bar element as the current one
 			this.structureView.setActiveTabBarElement('nav1');
 			//set title
@@ -64,6 +68,7 @@ define(function(require) {
 						listaSupermercati: listaSupermercati
 					});
 					// show the view
+					thisRouter.structureView.hideLoader();
 					thisRouter.changePage(page);
 				})
 			});
@@ -130,6 +135,7 @@ define(function(require) {
 						  listaProdotti: listaProdotti,
 						  listaSupermercati: listaSupermercati
 					  });
+					  thisRouter.structureView.hideLoader();
 					  thisRouter.changePage(page);
 				  })
 			  }); 
@@ -146,6 +152,7 @@ define(function(require) {
 	  },
 	  
 	  ProdottiCategoria: function(categoria){
+		  this.structureView.showLoader();
 		  this.structureView.setTitleContentElement(categoria);
 			this.structureView.setDisplayBackBtnElement();
 	
@@ -165,12 +172,14 @@ define(function(require) {
 						listaSupermercati: listaSupermercati
 					});
 					// show the view
+					thisRouter.structureView.hideLoader();
 					thisRouter.changePage(page);
 				})
 			});
 	  },
 	
 		Markets: function() {
+			this.structureView.showLoader();
 			this.structureView.setActiveTabBarElement('nav4');
 			this.structureView.setTitleContentElement('Markets');
 			this.structureView.setDisplayBackBtnElement();
@@ -183,11 +192,13 @@ define(function(require) {
 				var page = new VMarkets({
 					listaSupermercati: listaSupermercati,
 				});
+				thisRouter.structureView.hideLoader();
 				thisRouter.changePage(page);
 			});
 		},
 		
 		  ProdottiMarket: function(market){
+			  this.structureView.showLoader();
 			  var nomeSup = market.substring(7);
 			  var Ids = market.substring(0,6);
 				this.structureView.setTitleContentElement('Prodotti ' + nomeSup);
@@ -213,6 +224,7 @@ define(function(require) {
 							listaSupermercati: listaSupermercati
 						});
 						// show the view
+						thisRouter.structureView.hideLoader();
 						thisRouter.changePage(page);
 					})
 				});
@@ -228,6 +240,7 @@ define(function(require) {
 		},
 		
 		ProdottiRicerca: function(value){
+			this.structureView.showLoader();
 			this.structureView.setDisplayBackBtnElement();
 	
 			var listaProdotti = new CollProdotti();
@@ -246,12 +259,14 @@ define(function(require) {
 							listaProdotti: listaProdotti,
 							listaSupermercati: listaSupermercati
 						});
+						thisRouter.structureView.hideLoader();
 						thisRouter.addToPage(page, 'tabella')
 					})
 				} else {
 					var page = new VHome({
 						result: 'empty',
 					});
+					thisRouter.structureView.hideLoader();
 					thisRouter.addToPage(page, 'tabella')
 				}
 				// show the view removing an elementById

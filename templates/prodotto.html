@@ -1,10 +1,14 @@
-<img class='' id='imgProd' src=''>
-<p class='nome'>{{ Nome }}</p>
-<p class='prezzo'>€ {{ Prezzo }}</p>
-<div class='' id='tofollow'>
- 	<span class='icon icon-star icon-follow'></span>
+<div id="imm" align='center'>
+	<img class='' id='imgProd' src=''>
 </div>
-<p id='tapdettagli'>Tieni premuto per i dettagli</p>
+<p class='nome'>{{ Nome }}
+	<div class='' id='tofollow'>
+  		<span class='icon icon-star icon-follow'></span>
+	</div>
+</p>
+<p class='prezzo'>€ {{ Prezzo }}
+	<span id='tapdettagli'>Premi per i dettagli</span>
+</p>
 <div class='testo' id='dettagli'>
 	<p class='displaynone' id='id'>{{ Id }}</p>
     <p class='descrizione'>{{ Descrizione }}</p>
@@ -12,6 +16,21 @@
     	<img class='media-object pull-left' id='imgSup' src=''>
    		<div class='displaynone'>{{ Supermercato.Nome }}</div>
 </div>
+
+<!--<img class='' id='imgProd' src=''>
+<p class='nome'>{{ Nome }}</p>
+<p class='prezzo'>€ {{ Prezzo }}</p>
+<div class='' id='tofollow'>
+ 	<span class='icon icon-star icon-follow'></span>
+</div>
+<p id='tapdettagli'>Premi per i dettagli</p>
+<div class='testo' id='dettagli'>
+	<p class='displaynone' id='id'>{{ Id }}</p>
+    <p class='descrizione'>{{ Descrizione }}</p>
+    <p class='supermercato'>         	
+    	<img class='media-object pull-left' id='imgSup' src=''>
+   		<div class='displaynone'>{{ Supermercato.Nome }}</div>
+</div>-->
 
 <!-- <a class='float-left'>
 	<img class='media-object pull-left' id='imgProd' src='{{ Immagine.ImmagineHtml }}'>

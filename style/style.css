@@ -181,6 +181,7 @@ body {
 
 /* PRODOTTO */
 
+
 #prodotto {
 	text-color: #FFFFFF;
 	border: 4px solid #F09010;
@@ -222,19 +223,26 @@ body {
   	width:7.7em;
   	height:6em;
   	clear:both;}
-  	
-#prodotto > img {
-  	width:6em;
- 	height: 7em;
+/*AGGIUNTE--------------------------------*/
+#imm{
+	width:100%;
+	height: 50%
+}
+
+#imm > img {
+  	width:10em;
+ 	height: 6em;
  	border-radius: 15px;}
 
+/*-----------------*/
 .supermercato > #imgSup{
   	width:6em;
   	height: 3em;}
 
 .prezzo > #tapdettagli{
 	font-size: 50%;
-display: inline-block;}
+    display: inline-block;}
+
 @media screen and (max-width:1280px)and (min-width: 500px){
 
 #prodotto{
@@ -301,9 +309,21 @@ display: inline-block;}
 	width: 100%;
 	height: 50%;}
 	
-.float-left > img{
-	width: 9em;
-	height: 6em;}
+.categoria > #ImmCat {
+	width: 10em;
+	height: 9em;
+}
+
+#ImmCat > img {
+	width:6.5em;
+	height: 6em;
+}
+
+#ImmCat > p {
+	float: left;
+	margin-top: 40px;
+	font-size: 20px;
+}
 	
 /* MARKETS */
 
@@ -317,6 +337,17 @@ display: inline-block;}
 	
 #noitem, #offline {
 	top: 200px;}
+
+#boxloader {
+	backgroung-color: #FFFFFF;
+	width: 100%;
+	height: 100%;}
+	
+#boxloader > table {
+	margin-left: 45%;
+	margin-top: 45%;
+	width: 3em;
+	height: 3em;}
 
 /* END STRUCTURE */
 #mappa {

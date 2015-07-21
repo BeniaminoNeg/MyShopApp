@@ -97,6 +97,15 @@ define(function(require) {
 			if(document.getElementById(id)){
 				document.getElementById(id).remove();
 			}
+		},
+		//si presuppone che abbia displaynone come classe
+		showLoader: function(){
+	    	console.log(document.getElementById('back').classList);
+	    	document.getElementById('boxloader').classList.remove('displaynone');
+		},
+		
+		hideLoader: function(){
+	    	document.getElementById('boxloader').classList.add('displaynone');
 		}
 	});
 	
