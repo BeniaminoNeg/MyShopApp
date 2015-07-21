@@ -8,8 +8,8 @@ define(function(require){
 		model: MProdotto,
 		
         setProdottiHome : function() {
-        	this.url='http://localhost/MyShopWeb/call.php?func=HomeProd';
-        	//this.url='http://myshopp.altervista.org/call.php?func=HomeProd';
+        	//this.url='http://localhost/MyShopWeb/call.php?func=HomeProd';
+        	this.url='http://myshopp.altervista.org/call.php?func=HomeProd';
         },
         
         setProdottiSpotlight : function(followed) {
